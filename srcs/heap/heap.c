@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 01:53:26 by unite             #+#    #+#             */
-/*   Updated: 2020/03/14 10:47:52 by unite            ###   ########.fr       */
+/*   Updated: 2020/03/14 11:27:28 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct	s_heap
 	size_t	size;
 }				t_heap;
 
-int			init_heap(t_heap *heap)
+int			new_heap(t_heap *heap)
 {
 	heap->len = 0;
 	heap->size = 0;
@@ -105,34 +105,19 @@ int	pop_heap(t_heap *heap, void **data)
 	return (0);
 }
 
-static int	print_heap(t_heap *heap)
-{
-	size_t	i;
-	char	*c;
-
-	for (i = 1; i <= heap->len; i++)
-	{
-		c = (char *)heap->nodes[i].data;
-		printf("%s, ", c);
-	}
-	printf("\n");
-	return (0);
-}
-
 int main () {
     t_heap 	*h;
     void	*c;
     size_t	i;
 
-    init_heap(h);
+    new_heap(h);
     push_heap(h, 3, "Clear drains");
     push_heap(h, 4, "Feed cat");
     push_heap(h, 5, "Make tea");
     push_heap(h, 1, "Solve RC tasks");
     push_heap(h, 2, "Tax return");
-    for (i = 0; i < 5; i++)
+    while (pop_heap(h, &c) == 0)
     {
-    	pop_heap(h, &c);
         printf("%s\n", (char *)c);
     }
     return 0;
