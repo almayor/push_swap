@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 15:17:22 by unite             #+#    #+#             */
-/*   Updated: 2020/02/26 04:55:06 by unite            ###   ########.fr       */
+/*   Updated: 2020/03/15 15:37:00 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 
 # include <string.h>
 # include <stdarg.h>
-
-# include "get_next_line.h"
-# include "ft_printf.h"
 
 # define MININT		-2147483648
 # define MAXINT		2147483647
@@ -144,5 +141,36 @@ char				*ft_strtrim(char const *s);
 int					ft_sum(int const *tab, size_t len);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
+
+
+/*
+**
+*/
+
+# define BUFF_SIZE	32
+# define EOL		'\n'
+
+typedef struct		s_list
+					t_list;
+
+typedef struct		s_fd_cache
+{
+	int				fd;
+	t_list			*cache;
+}					t_fd_cache;
+
+int					get_next_line(const int fd, char **line);
+int					get_next_line_untrim(const int fd, char **line);
+
+/*
+**
+*/
+
+# include <stdarg.h>
+
+int	ft_printf(const char *format, ...);
+int	ft_dprintf(int fd, const char *format, ...);
+int	ft_vprintf(const char *format, va_list ap);
+int	ft_vdprintf(int fd, const char *format, va_list ap);
 
 #endif

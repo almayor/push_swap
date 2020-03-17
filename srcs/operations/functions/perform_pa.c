@@ -6,16 +6,20 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 23:15:52 by unite             #+#    #+#             */
-/*   Updated: 2020/02/26 05:13:54 by unite            ###   ########.fr       */
+/*   Updated: 2020/03/16 19:22:36 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "operations.h"
-#include "stack.h"
 
 int	perform_pa(t_stack *stackA, t_stack *stackB)
 {
-	t_link	*link;
-
-	return (pull_stack(stackB, &link) || push_stack(stackA, link));
+	int	value;
+	int	rc;
+	
+	if ((rc = pull_stack(stackB, &value)))
+		return (rc);
+	if ((rc = push_stack(stackA, value)))
+		return (rc);
+	return (0);
 }

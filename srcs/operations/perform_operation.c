@@ -6,13 +6,11 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 02:25:40 by unite             #+#    #+#             */
-/*   Updated: 2020/02/26 07:27:52 by unite            ###   ########.fr       */
+/*   Updated: 2020/03/15 18:49:44 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "operations.h"
-#include "stack.h"
-#include "libft.h"
 
 int	perform_operation(t_stack *stackA, t_stack *stackB, char *oper)
 {
@@ -30,7 +28,6 @@ int	perform_operation(t_stack *stackA, t_stack *stackB, char *oper)
 		(t_operation){ .name = "rrb", .function = perform_rrb },
 		(t_operation){ .name = "rrr", .function = perform_rrr }};
 
-	ft_printf("%s\n", oper);
 	i = 0;
 	while (i < 11)
 	{

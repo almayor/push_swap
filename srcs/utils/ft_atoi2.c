@@ -6,11 +6,11 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 23:56:29 by unite             #+#    #+#             */
-/*   Updated: 2020/02/23 03:16:49 by unite            ###   ########.fr       */
+/*   Updated: 2020/03/16 02:27:37 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "libft.h"
 
 int	ft_atoi2(const char *str, int *resp)
 {
@@ -30,7 +30,9 @@ int	ft_atoi2(const char *str, int *resp)
 	{
 		res = res * 10 - (*str - '0');
 		str++;
-		if (res < MININT || res > MAXINT)
+		if (res < MININT && negative)
+			return (1);
+		if (res < -MAXINT && !negative)
 			return (1);
 	}
 	*resp = negative ? res : -res;
