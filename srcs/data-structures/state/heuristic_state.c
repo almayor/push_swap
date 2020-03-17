@@ -5,65 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/14 13:30:05 by unite             #+#    #+#             */
-/*   Updated: 2020/03/17 06:32:15 by unite            ###   ########.fr       */
+/*   Created: 2020/03/17 11:18:52 by unite             #+#    #+#             */
+/*   Updated: 2020/03/17 16:12:46 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "state.h"
 
-// static int	min_abs(int a, int b)
-// {
-// 	if (a < 0)
-// 		a = -a;
-// 	if (b < 0)
-// 		b = -b;
-// 	return (a < b ? a : b);
-// }
+static int	unsorted_pairs(const t_stack *stack, int descending)
+{
+	int 	nunsorted;
+	t_ilink	*node;
 
-// static int	unsorted_pairs(const t_stack *stack)
-// {
-// 	int		len;
-// 	int		i;
-// 	int 	nunsorted;
-// 	t_ilink	*node;
-
-// 	len = len_stack(stack);
-// 	i = 0;
-// 	nunsorted = 0;
-// 	node = stack->start;
-// 	while (node && node->next)
-// 	{
-// 		if (node->value > node->next->value)
-// 			nunsorted += 1 + min_abs(len - i, i - len);
-// 		node = node->next;
-// 	}
-// 	return (nunsorted);
-// }
-
-// static int	sorted_pairs(const t_stack *stack)
-// {
-// 	int		len;
-// 	int		i;
-// 	int 	nsorted;
-// 	t_ilink	*node;
-
-// 	len = len_stack(stack);
-// 	i = 0;
-// 	nsorted = 0;
-// 	node = stack->start;
-// 	while (node && node->next)
-// 	{
-// 		if (node->value < node->next->value)
-// 			nsorted += 1 + min_abs(len - i, i - len);
-// 		node = node->next;
-// 	}
-// 	return (nsorted);
-// }
+	nunsorted = 0;
+	node = stack->start;
+	while (node && node->next)
+	{
+		if (node->value < node->next->value && descending)
+			nunsorted += 1;
+		if (node->value > node->next->value && !descending)
+			nunsorted += 1;
+		node = node->next;
+	}
+	return (nunsorted);
+}
 
 int			heuristic_state(const t_state *state)
 {
-	return (unsorted_pairs(state->stackA) +
-			sorted_pairs(state->stackB) +
+	return (unsorted_pairs(state->stackA, 0) +
+			unsorted_pairs(state->stackB, 1) +
 			len_stack(state->stackB));
 }

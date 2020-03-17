@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 13:37:19 by unite             #+#    #+#             */
-/*   Updated: 2020/03/17 06:13:28 by unite            ###   ########.fr       */
+/*   Updated: 2020/03/17 15:54:25 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	expand_fringe(t_heap *fringe, t_state *parent)
 {
 	static char	*opers[] = {
-		"pa", "pb", "ra", "rb", "rr", "rra", "rrb", "rrr", "sa", "sb", "ss"
+		"ra", "rb", "rr", "rra", "rrb", "rrr", "sa", "sb", "ss", "pa", "pb"
 	};
 	int			i;
 	int			rc;
@@ -75,7 +75,6 @@ int			A_search(t_stack *stackA, t_queue **trace)
 		return (1);
 	while (pop_heap(fringe, (void **)&state) == 0)
 	{
-		ft_printf("Popped with priority = %d\n", state->h + state->g);
 		if (is_goal_state(state))
 		{
 			copy_queue(state->trace, trace);

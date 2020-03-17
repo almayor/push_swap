@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/15 10:45:29 by unite             #+#    #+#             */
-/*   Updated: 2020/03/16 12:14:23 by unite            ###   ########.fr       */
+/*   Updated: 2020/03/17 11:44:35 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,15 @@ int free_state(t_state *state);
 int	is_goal_state(const t_state *state);
 int	new_state(t_state **state, t_stack *stackA);
 int succeed_state(const t_state *parent, t_state **child, char *oper);
+
+/*
+** heuristics
+*/
+
 int heuristic_state(const t_state *state);
+int admissible_heuristic_state(const t_state *state);
+int double_heuristic_state(const t_state *state);
+int all_pairs_heuristic_state(const t_state *state);
+int scaled_heuristic_state(const t_state *state);
 
 #endif

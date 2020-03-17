@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/15 15:54:31 by unite             #+#    #+#             */
-/*   Updated: 2020/03/17 06:07:51 by unite            ###   ########.fr       */
+/*   Updated: 2020/03/17 13:18:17 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 # define HEAP_H
 # define HEAP_PRIVATE_H
-# define MAX_HEAP	1000000
+# define MAX_HEAP	1024
 
 # include <stdlib.h>
 # include "libft.h"

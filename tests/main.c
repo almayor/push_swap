@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/15 19:15:10 by unite             #+#    #+#             */
-/*   Updated: 2020/03/16 19:54:37 by unite            ###   ########.fr       */
+/*   Updated: 2020/03/17 10:44:25 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ int			main(void)
 	if (result != 0)
 	{
         ft_printf("%s\n", result);
-        ft_printf("{red}TESTS FAILED{eoc}\n");
+        ft_printf("\n{red}TESTS FAILED{eoc}\n");
 	}
     else
     {
-        ft_printf("{green}ALL TESTS PASSED{eoc}\n");
+        ft_printf("\n{green}ALL TESTS PASSED{eoc}\n");
     }
     ft_printf("Tests run: %d\n", tests_run);
 

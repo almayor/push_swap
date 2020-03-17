@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/15 10:37:12 by unite             #+#    #+#             */
-/*   Updated: 2020/03/17 06:07:20 by unite            ###   ########.fr       */
+/*   Updated: 2020/03/17 13:18:06 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ static int	resize_heap(t_heap *heap)
 
 	heap->size = heap->size ? heap->size * 2 : 4;
 	if (heap->size > MAX_HEAP)
-	{
-		ft_printf("Oversized heap\n");
 		return (1);
-	}
 	if (!(nodes = malloc(sizeof(t_node) * heap->size)))
 		return (1);
 	i = 1;
