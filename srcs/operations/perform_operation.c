@@ -29,6 +29,7 @@ int	perform_operation(t_stack *stackA, t_stack *stackB, char *oper)
 		(t_operation){ .name = "rrr", .function = perform_rrr }};
 
 	i = 0;
+	ft_printf("Performing %s\n", oper);
 	while (i < 11)
 	{
 		if (ft_strequ(dispatch_table[i].name, oper))

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="push_swap"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/user/Documents/programming/42/push_swap/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/user/Documents/programming/42/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/user/Documents/programming/42/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/user/Documents/programming/42/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/user/Documents/programming/42/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/user/Documents/programming/42/push_swap/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/user/Documents/programming/42/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/user/Documents/programming/42/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/user/Documents/programming/42/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/user/Documents/programming/42/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/user/Documents/programming/42/push_swap/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/user/Documents/programming/42/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/user/Documents/programming/42/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/user/Documents/programming/42/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/user/Documents/programming/42/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="push_swap">
+				<Option output="/Users/user/Documents/programming/42/push_swap/cmake-build-debug/push_swap" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/user/Documents/programming/42/push_swap/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/user/Documents/programming/42/push_swap/includes"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/user/Documents/programming/42/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 push_swap"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/user/Documents/programming/42/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/user/Documents/programming/42/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/user/Documents/programming/42/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="push_swap/fast">
+				<Option output="/Users/user/Documents/programming/42/push_swap/cmake-build-debug/push_swap" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/user/Documents/programming/42/push_swap/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/user/Documents/programming/42/push_swap/includes"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/user/Documents/programming/42/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 push_swap/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/user/Documents/programming/42/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/user/Documents/programming/42/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/user/Documents/programming/42/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/includes/libft.h">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/includes/push_swap.h">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/includes/stack.h">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/operations/functions/perform_pa.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/operations/functions/perform_pb.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/operations/functions/perform_ra.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/operations/functions/perform_rb.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/operations/functions/perform_rr.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/operations/functions/perform_rra.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/operations/functions/perform_rrb.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/operations/functions/perform_rrr.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/operations/functions/perform_sa.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/operations/functions/perform_sb.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/operations/functions/perform_ss.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/operations/perform_operation.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/push_swap.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/stack/append_stack.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/stack/avg_stack.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/stack/free_stack.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/stack/has_duplicates_stack.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/stack/is_sorted_stack.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/stack/max_stack.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/stack/min_stack.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/stack/new_stack.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/stack/print_stack.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/stack/pull_stack.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/stack/push_stack.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/stack/rank_stack.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/stack/reverse_rotate_stack.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/stack/rotate_stack.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/stack/swap_stack.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/utils/ft_atoi2.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/srcs/utils/is_numeric_str.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/user/Documents/programming/42/push_swap/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

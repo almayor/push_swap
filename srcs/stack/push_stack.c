@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/15 16:04:01 by unite             #+#    #+#             */
-/*   Updated: 2020/03/18 09:37:32 by unite            ###   ########.fr       */
+/*   Created: 2020/02/22 23:03:54 by unite             #+#    #+#             */
+/*   Updated: 2020/03/18 09:38:44 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
+#include "stack.h"
 
-# define PUSH_SWAP_H
+int	push_stack(t_stack *stack, int value)
+{
+	t_link	*link;
 
-# include "libft.h"
-# include "stack.h"
-# include "operations.h"
-# include "utils.h"
-
-#endif
+	if (!(link = malloc(sizeof(t_link))))
+		return (1);
+	link->value = value;
+	link->next = stack->start;
+	link->previous = 0;
+	if (stack->size > 0)
+		stack->start->previous = link;
+	if (stack->size == 0)
+		stack->end = link;
+    stack->start = link;
+	stack->size += 1;
+	return (0);
+}

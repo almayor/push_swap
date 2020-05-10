@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   new_stack.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/15 16:04:01 by unite             #+#    #+#             */
-/*   Updated: 2020/03/18 09:37:32 by unite            ###   ########.fr       */
+/*   Created: 2020/02/22 23:10:12 by unite             #+#    #+#             */
+/*   Updated: 2020/03/16 17:08:32 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
+#include "stack.h"
 
-# define PUSH_SWAP_H
-
-# include "libft.h"
-# include "stack.h"
-# include "operations.h"
-# include "utils.h"
-
-#endif
+int	new_stack(t_stack *stack)
+{
+	stack->start = 0;
+	stack->end = 0;
+    stack->size = 0;
+	return (0);
+}

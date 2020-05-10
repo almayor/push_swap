@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   is_sorted_stack.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/15 16:04:01 by unite             #+#    #+#             */
-/*   Updated: 2020/03/18 09:37:32 by unite            ###   ########.fr       */
+/*   Created: 2020/02/24 23:52:31 by unite             #+#    #+#             */
+/*   Updated: 2020/03/18 09:38:18 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
+#include "stack.h"
 
-# define PUSH_SWAP_H
+int	is_sorted_stack(const t_stack *stack)
+{
+	t_link *link;
 
-# include "libft.h"
-# include "stack.h"
-# include "operations.h"
-# include "utils.h"
-
-#endif
+	if (!stack->start)
+		return (1);
+	link = stack->start;
+	while (link->next)
+	{
+		if (link->value >= link->next->value)
+			return (0);
+		link = link->next;
+	}
+	return (1);
+}
