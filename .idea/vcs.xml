@@ -2,5 +2,11 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/libftprintfgnl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/libftprintfgnl/ft_printf" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/libftprintfgnl/ft_printf/libft" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/libftprintfgnl/get_next_line" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/libftprintfgnl/get_next_line/libft" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/libftprintfgnl/libft" vcs="Git" />
   </component>
 </project>

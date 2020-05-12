@@ -11,24 +11,24 @@
 # **************************************************************************** #
 
 NAME_CHECKER = checker
-SRC_CHECKER_NAME = srcs/checker.c
+SRC_CHECKER_NAME = src/checker.c
 
 NAME_PUSHSWAP = push_swap
-SRC_PUSHSWAP_NAME = srcs/push_swap.c
+SRC_PUSHSWAP_NAME = src/push_swap.c
 
 NAME_TESTS = tests.out
-SRC_TESTS_NAME = srcs/main.c
+SRC_TESTS_NAME = src/main.c
 
 ################################################################################
 
-SRC_NAME += $(wildcard srcs/*/*.c)
-SRC_NAME += $(wildcard srcs/*/*/*.c)
-SRC_NAME += $(wildcard srcs/*/*/*/*.c)
+SRC_NAME += $(wildcard src/*/*.c)
+SRC_NAME += $(wildcard src/*/*/*.c)
+SRC_NAME += $(wildcard src/*/*/*/*.c)
 
 ################################################################################
 
 PATHS = .
-PATHO = objs
+PATHO = obj
 PATHI = includes
 
 PATHFT = libftprintf.a
