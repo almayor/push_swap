@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 13:07:16 by unite             #+#    #+#             */
-/*   Updated: 2020/05/12 00:32:47 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/13 15:09:58 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ static void     sort_stackB(t_stack *stackA, t_stack *stackB)
 
 static void      split_stackA(t_stack *stackA, t_stack *stackB, int minbound)
 {
-	int  i;
-	int 	n;
+	int	i;
+	int	n;
 
 	i = 0;
 	n = stackA->size;

@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   has_duplicates_stack.c                             :+:      :+:    :+:   */
+/*   isset_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 19:28:08 by unite             #+#    #+#             */
-/*   Updated: 2020/05/12 00:26:58 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/13 15:13:24 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 
-int	has_duplicates_stack(const t_stack *stack)
+int	isset_stack(const t_stack *stack)
 {
-	t_link	*start;
-	t_link	*current;
+	t_link	*ili;
+	t_link	*jli;
 
 	if (stack->size < 2)
-		return (0);
-	start = stack->start;
-	while (start->next)
+		return (1);
+	ili = stack->start;
+	while (ili->next)
 	{
-		current = start;
-		while (current->next)
+		jli = ili;
+		while (jli->next)
 		{
-			if (current->value == current->next->value)
-				return (1);
-			current = current->next;
+			if (jli->value == jli->next->value)
+				return (0);
+			jli = jli->next;
 		}
-		start = start->next;
+		ili = ili->next;
 	}
-	return (0);
+	return (1);
 }

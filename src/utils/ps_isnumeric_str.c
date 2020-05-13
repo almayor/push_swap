@@ -6,11 +6,11 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 23:12:47 by unite             #+#    #+#             */
-/*   Updated: 2020/05/12 22:28:09 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/13 18:08:12 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
 int		ps_isnumeric_str(const char *str)
 {

@@ -6,14 +6,15 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 23:15:52 by unite             #+#    #+#             */
-/*   Updated: 2020/05/12 23:12:12 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/13 18:24:06 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "operations.h"
 
-void	perform_rrr(t_stack *stackA, t_stack *stackB)
+int	perform_rrr(t_stack *sa, t_stack *sb)
 {
-	perform_rra(stackA, stackB);
-	perform_rrb(stackA, stackB);
+	perform_rra(sa, sb);
+	perform_rrb(sa, sb);
+	return (0);
 }

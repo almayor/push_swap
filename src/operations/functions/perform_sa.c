@@ -6,14 +6,15 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 23:15:07 by unite             #+#    #+#             */
-/*   Updated: 2020/05/12 23:11:51 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/13 18:22:57 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "operations.h"
 
-void	perform_sa(t_stack *stackA, t_stack *stackB)
+int	perform_sa(t_stack *sa, t_stack *sb)
 {
-	(void)stackB;
-	swap_stack(stackA);
+	(void)sb;
+	swap_stack(sa);
+	return (0);
 }

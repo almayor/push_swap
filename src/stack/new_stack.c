@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 23:10:12 by unite             #+#    #+#             */
-/*   Updated: 2020/05/12 00:26:04 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/13 18:27:56 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@ void	new_stack(t_stack *stack)
 {
 	stack->start = 0;
 	stack->end = 0;
-    stack->size = 0;
+	stack->size = 0;
 }

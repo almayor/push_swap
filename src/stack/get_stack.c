@@ -6,13 +6,13 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 21:45:20 by unite             #+#    #+#             */
-/*   Updated: 2020/05/12 21:46:33 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/13 18:28:38 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "stack.h"
 
-int	get_stack(t_stack *stack, int index)
+int	get_stack(const t_stack *stack, int index)
 {
 	t_link	*link;
 

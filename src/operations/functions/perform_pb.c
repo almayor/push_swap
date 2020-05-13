@@ -6,13 +6,13 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 23:15:52 by unite             #+#    #+#             */
-/*   Updated: 2020/05/12 23:22:07 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/13 18:24:03 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "operations.h"
 
-void	perform_pb(t_stack *stackA, t_stack *stackB)
+int	perform_pb(t_stack *sa, t_stack *sb)
 {
-	push_stack(stackB, pull_stack(stackA));
+	return (push_stack(sb, pull_stack(sa)));
 }

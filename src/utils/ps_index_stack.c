@@ -6,34 +6,54 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 22:42:53 by unite             #+#    #+#             */
-/*   Updated: 2020/05/12 22:48:21 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/13 17:05:21 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ps_index_stack(t_stack **stack)
+static void	switch_stacks(t_stack *stack1, t_stack *stack2)
 {
-	t_stack	index_stack;
-	t_link	*ilink;
-	t_link	*jlink;
+	t_stack	tmp;
+
+	tmp = *stack1;
+	*stack1 = *stack2;
+	*stack2 = tmp;
+}
+
+static int	get_index(t_stack *stack, int val)
+{
+	t_link *li;
 	int		index;
 
-	new_stack(&index_stack);
-	ilink = *stack;
-	while (ilink)
+	li = stack->start;
+	index = 0;
+	while (li)
 	{
-		jlink = *stack;
-		index = 0;
-		while (jlink)
-		{
-			if (ilink->value <= jlink->value)
-				++index;
-			jlink = jlink->next;
-		}
-		push_stack(index_stack, index);
-		ilink = ilink->next;
+		if (li->value <= val)
+			++index;
+		li = li->next;
 	}
-	free_stack(*stack);
-	*stack = index_stack;
+	return (index);
+}
+
+int			ps_index_stack(t_stack *stack)
+{
+	t_stack	index_stack;
+	t_link	*li;
+
+	new_stack(&index_stack);
+	li = stack->start;
+	while (li)
+	{
+		if (push_stack(&index_stack, get_index(stack, li->value)))
+		{
+			free_stack(&index_stack);
+			return ((errno = ENOMEM));
+		}
+		li = li->next;
+	}
+	switch_stacks(stack, &index_stack);
+	free_stack(&index_stack);
+	return (0);
 }

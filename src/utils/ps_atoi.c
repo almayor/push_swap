@@ -6,11 +6,11 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 23:56:29 by unite             #+#    #+#             */
-/*   Updated: 2020/05/12 23:29:57 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/13 18:08:41 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
 int	ps_atoi(const char *str, int *resp)
 {
@@ -30,10 +30,10 @@ int	ps_atoi(const char *str, int *resp)
 	{
 		res = res * 10 - (*str - '0');
 		str++;
-		if (res < MININT && negative)
-			ps_exit("Error\n", 1);
-		if (res < -MAXINT && !negative)
-			ps_exit("Error\n", 1);
+		if (negative && res < MININT)
+			return ((errno = EOVERFLOW))
+		if (!negative && res < -MAXINT)
+			return ((errno = EOVERFLOW));
 	}
 	*resp = negative ? res : -res;
 	return (0);
