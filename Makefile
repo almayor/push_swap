@@ -6,7 +6,7 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/05/15 02:05:14 by unite            ###   ########.fr        #
+#    Updated: 2020/05/15 02:21:08 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRC_NAME = $(wildcard src/*/*/*/*)
 
 PATHS = .
 PATHO = obj
-PATHI = include
+PATHI = include $(PATHL)
 PATHL = libftprintfgnl
 
 PATHTESTS = test/unit/src
@@ -31,12 +31,14 @@ PATHTESTI = test/unit/include
 ################################################################################
 
 COMPILE = gcc -c
-LINK = gcc
+LINK = gcc -lftprintfgnl -L $(PATHL)
 
 CFLAGS += -Wall -Wextra -Werror
 CFLAGS += -O3 -std=gnu11 -ffast-math -march=native
 CFLAGS += -MMD
-CFLAGS += -lftprintfgnl -L $(PATHL)
+CFLAGS += $(foreach path, $(PATHI), -I$(path))
+
+CFLAGSTEST = $(foreach path, $(PATHTESTI), -I$(path))
 
 ################################################################################
 
@@ -65,7 +67,7 @@ $(NAME_PS) : $(OBJ_PS) $(OBJ)
 
 $(PATHO)/%.o : $(PATHS)/%.c
 	mkdir -p $(@D)
-	$(COMPILE) $(CFLAGS) -I$(PATHI) $< -o $@
+	$(COMPILE) $(CFLAGS) $< -o $@
 
 ################################################################################
 
@@ -80,7 +82,7 @@ $(NAME_TESTS) : $(OBJ_TEST) $(OBJ)
 
 $(PATHTESTO)/%.o : $(PATHTESTS)/%.c
 	mkdir -p $(@D)
-	$(COMPILE) $(CFLAGS) -I$(PATHI) -I$(PATHTESTI) $< -o $@
+	$(COMPILE) $(CFLAGS) $(CFLAGSTEST) $< -o $@
 
 ################################################################################
 
