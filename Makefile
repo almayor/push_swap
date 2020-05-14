@@ -6,32 +6,27 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/03/18 09:52:55 by unite            ###   ########.fr        #
+#    Updated: 2020/05/15 02:05:14 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME_CHECKER = checker
-SRC_CHECKER_NAME = src/checker.c
+NAME_CK = checker
+SRC_CK_NAME = src/checker.c
 
-NAME_PUSHSWAP = push_swap
-SRC_PUSHSWAP_NAME = src/push_swap.c
+NAME_PS = push_swap
+SRC_PS_NAME = src/push_swap.c
 
-NAME_TESTS = tests.out
-SRC_TESTS_NAME = src/main.c
-
-################################################################################
-
-SRC_NAME += $(wildcard src/*/*.c)
-SRC_NAME += $(wildcard src/*/*/*.c)
-SRC_NAME += $(wildcard src/*/*/*/*.c)
+SRC_NAME = $(wildcard src/*/*/*/*)
 
 ################################################################################
 
 PATHS = .
 PATHO = obj
-PATHI = includes
+PATHI = include
+PATHL = libftprintfgnl
 
-PATHFT = libftprintf.a
+PATHTESTS = test/unit/src
+PATHTESTI = test/unit/include
 
 ################################################################################
 
@@ -41,13 +36,11 @@ LINK = gcc
 CFLAGS += -Wall -Wextra -Werror
 CFLAGS += -O3 -std=gnu11 -ffast-math -march=native
 CFLAGS += -MMD
+CFLAGS += -lftprintfgnl -L $(PATHL)
 
 ################################################################################
 
-TRUE = 1
-FALSE = 0
-
-ifeq ($(DEBUG), $(TRUE)) 
+ifeq ($(DEBUG), 1) 
 	COMPILE += -g
 endif
 
@@ -56,18 +49,18 @@ endif
 SRC = $(patsubst %.c, $(PATHS)/%.c, $(SRC_NAME))
 OBJ = $(patsubst %.c, $(PATHO)/%.o, $(SRC_NAME))
 
-SRC_CHECKER = $(patsubst %.c, $(PATHS)/%.c, $(SRC_CHECKER_NAME))
-OBJ_CHECKER = $(patsubst %.c, $(PATHO)/%.o, $(SRC_CHECKER_NAME))
+SRC_CK = $(patsubst %.c, $(PATHS)/%.c, $(SRC_CK_NAME))
+OBJ_CK = $(patsubst %.c, $(PATHO)/%.o, $(SRC_CK_NAME))
 
-SRC_PUSHSWAP = $(patsubst %.c, $(PATHS)/%.c, $(SRC_PUSHSWAP_NAME))
-OBJ_PUSHSWAP = $(patsubst %.c, $(PATHO)/%.o, $(SRC_PUSHSWAP_NAME))
+SRC_PS = $(patsubst %.c, $(PATHS)/%.c, $(SRC_PS_NAME))
+OBJ_PS = $(patsubst %.c, $(PATHO)/%.o, $(SRC_PS_NAME))
 
 ################################################################################
 
-$(NAME_CHECKER) : $(OBJ_CHECKER) $(OBJ) $(PATHFT)
+$(NAME_CK) : $(OBJ_CK) $(OBJ)
 	$(LINK) $^ -o $@
 
-$(NAME_PUSHSWAP) : $(OBJ_PUSHSWAP) $(OBJ) $(PATHFT)
+$(NAME_PS) : $(OBJ_PS) $(OBJ)
 	$(LINK) $^ -o $@
 
 $(PATHO)/%.o : $(PATHS)/%.c
@@ -76,24 +69,25 @@ $(PATHO)/%.o : $(PATHS)/%.c
 
 ################################################################################
 
-SRC_TESTS += $(wildcard tests/*.c)
-SRC_TESTS += $(wildcard tests/*/*.c)
-SRC_TESTS += $(wildcard tests/*/*/*.c)
+SRC_TEST += $(wildcard $(PATHTESTS)/*.c)
+SRC_TEST += $(wildcard $(PATHTESTS)/*/*.c)
+SRC_TEST += $(wildcard $(PATHTESTS)/*/*/*.c)
 
-OBJ_TESTS = $(patsubst %.c, $(PATHO)/%.o, $(SRC_TESTS))
+OBJ_TEST = $(patsubst $(PATHTESTS)/%.c, $(PATHTESTO)/%.o, $(SRC_TEST))
 
-$(NAME_TESTS) : $(OBJ_TESTS) $(PATHFT) $(OBJ)
+$(NAME_TESTS) : $(OBJ_TEST) $(OBJ)
 	$(LINK) $^ -o $@
 
-$(PATHO)/%.o : $(PATHS)/%.c
+$(PATHTESTO)/%.o : $(PATHTESTS)/%.c
 	mkdir -p $(@D)
-	$(COMPILE) $(CFLAGS) -I$(PATHI) $< -o $@
+	$(COMPILE) $(CFLAGS) -I$(PATHI) -I$(PATHTESTI) $< -o $@
 
 ################################################################################
 
 DEP += $(patsubst %.c, $(PATHO)/%.d, $(SRC_NAME))
-DEP += $(patsubst %.c, $(PATHO)/%.d, $(SRC_CHECKER_NAME))
-DEP += $(patsubst %.c, $(PATHO)/%.d, $(SRC_PUSHSWAP_NAME))
+DEP += $(patsubst %.c, $(PATHO)/%.d, $(SRC_CK_NAME))
+DEP += $(patsubst %.c, $(PATHO)/%.d, $(SRC_PS_NAME))
+DEP += $(patsubst %.c, $(PATHTESTO)/%.d, $(SRC_TEST_NAME))
 
 -include $(DEP)
 
@@ -101,17 +95,20 @@ DEP += $(patsubst %.c, $(PATHO)/%.d, $(SRC_PUSHSWAP_NAME))
 
 .PHONY : all clean fclean re test
 
-all : $(NAME_CHECKER) $(NAME_PUSHSWAP)
+all : $(PATHL)/libftprintfgnl.a $(NAME_CK) $(NAME_PS)
 
 fclean : clean
-	rm -f $(NAME_CHECKER) $(NAME_PUSHSWAP) $(NAME_TESTS)
+	rm -f $(NAME_CK) $(NAME_PS) $(NAME_TESTS)
 
 clean :
 	rm -rf $(PATHO)
 
 re : fclean all
 
-tests : all $(NAME_TESTS)
-	./$(NAME_TESTS)
+test : all $(NAME_TEST)
+	./$(NAME_TEST)
+
+$(PATHL)/libftprintfgnl.a :
+	make -C $(PATHL)
 
 ################################################################################
