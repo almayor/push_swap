@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 22:48:04 by unite             #+#    #+#             */
-/*   Updated: 2020/05/13 17:41:10 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/15 02:23:45 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	process_operations(t_stack *stackA, t_stack *stackB)
 			return (errno);
 		if (ft_strequ(oper, ""))
 			return (0) ;
-		perform_operation(&stackA, &stackB, oper);
+		perform_operation(stackA, stackB, oper);
 		free(oper);
 	}
 }

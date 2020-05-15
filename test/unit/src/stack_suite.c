@@ -1,13 +1,14 @@
 #include "minunit.h"
 #include "stack.h"
+#include <limits.h>
 
 MU_TEST(test_new) {
 	t_stack st;
 
 	new_stack(&st);
-	mu_check(st->start == 0);
-	mu_check(st->end == 0);
-	mu_check(st->size == 0);
+	mu_check(st.start == 0);
+	mu_check(st.end == 0);
+	mu_check(st.size == 0);
 }
 
 MU_TEST(test_push) {
@@ -15,13 +16,13 @@ MU_TEST(test_push) {
 	t_link	*li;
 
 	new_stack(&st);
-	push_stack(INT_MIN);
-	push_stack(0);
-	push_stack(-3);
-	push_stack(1);
-	push_stack(INT_MAX);
+	push_stack(&st, INT_MIN);
+	push_stack(&st, 0);
+	push_stack(&st, -3);
+	push_stack(&st, 1);
+	push_stack(&st, INT_MAX);
 
-	li = st->start;
+	li = st.start;
 	mu_check(li->value == INT_MAX);
 	li = li->next;
 	mu_check(li->value == 1);
@@ -40,11 +41,11 @@ MU_TEST(test_pull) {
 	int		val;
 
 	new_stack(&st);
-	push_stack(INT_MIN);
-	push_stack(0);
-	push_stack(-3);
-	push_stack(1);
-	push_stack(INT_MAX);
+	push_stack(&st, INT_MIN);
+	push_stack(&st, 0);
+	push_stack(&st, -3);
+	push_stack(&st, 1);
+	push_stack(&st, INT_MAX);
 
 	val = pull_stack(&st);
 	mu_check(val == INT_MAX);
@@ -63,22 +64,22 @@ MU_TEST(test_append) {
 	int		val;
 
 	new_stack(&st);
-	append_stack(INT_MAX);
-	append_stack(5555);
-	append_stack(-10);
-	append_stack(24);
-	append_stack(INT_MIN);
+	append_stack(&st, INT_MAX);
+	append_stack(&st, 5555);
+	append_stack(&st, -10);
+	append_stack(&st, 24);
+	append_stack(&st, INT_MIN);
 
 	val = pull_stack(&st);
-	mu_check(val == INT_MIN);
-	val = pull_stack(&st);
-	mu_check(val == 24);
-	val = pull_stack(&st);
-	mu_check(val == -10);
+	mu_check(val == INT_MAX);
 	val = pull_stack(&st);
 	mu_check(val == 5555);
 	val = pull_stack(&st);
-	mu_check(val == INT_MAX);
+	mu_check(val == -10);
+	val = pull_stack(&st);
+	mu_check(val == 24);
+	val = pull_stack(&st);
+	mu_check(val == INT_MIN);
 }
 
 MU_TEST(test_rotate) {
@@ -86,11 +87,11 @@ MU_TEST(test_rotate) {
 	int		val;
 
 	new_stack(&st);
-	append_stack(INT_MAX);
-	append_stack(5555);
-	append_stack(-10);
-	append_stack(24);
-	append_stack(INT_MIN);
+	append_stack(&st, INT_MAX);
+	append_stack(&st, 5555);
+	append_stack(&st, -10);
+	append_stack(&st, 24);
+	append_stack(&st, INT_MIN);
 
 	rotate_stack(&st);
 	val = pull_stack(&st);
@@ -114,11 +115,11 @@ MU_TEST(test_reverse_rotate) {
 	int		val;
 
 	new_stack(&st);
-	append_stack(INT_MAX);
-	append_stack(5555);
-	append_stack(-10);
-	append_stack(24);
-	append_stack(INT_MIN);
+	append_stack(&st, INT_MAX);
+	append_stack(&st, 5555);
+	append_stack(&st, -10);
+	append_stack(&st, 24);
+	append_stack(&st, INT_MIN);
 
 	reverse_rotate_stack(&st);
 	val = pull_stack(&st);
@@ -142,15 +143,12 @@ MU_TEST(test_swap) {
 	int		val;
 
 	new_stack(&st);
-	append_stack(INT_MAX);
-	append_stack(5555);
-	append_stack(-10);
-	append_stack(24);
-	append_stack(INT_MIN);
+	append_stack(&st, INT_MAX);
+	append_stack(&st, 5555);
+	append_stack(&st, -10);
+	append_stack(&st, 24);
+	append_stack(&st, INT_MIN);
 
-	swap_stack(&st);
-	val = pull_stack(&st);
-	mu_check(val == INT_MAX);
 	swap_stack(&st);
 	val = pull_stack(&st);
 	mu_check(val == 5555);
@@ -162,6 +160,9 @@ MU_TEST(test_swap) {
 	mu_check(val == 24);
 	swap_stack(&st);
 	val = pull_stack(&st);
+	mu_check(val == INT_MIN);
+	swap_stack(&st);
+	val = pull_stack(&st);
 	mu_check(val == INT_MAX);
 }
 
@@ -169,34 +170,34 @@ MU_TEST(test_issorted) {
 	t_stack st;
 
 	new_stack(&st);
-	append_stack(-1);
-	append_stack(0);
-	append_stack(1);
-	append_stack(2);
-	append_stack(3);
+	append_stack(&st, -1);
+	append_stack(&st, 0);
+	append_stack(&st, 1);
+	append_stack(&st, 2);
+	append_stack(&st, 3);
 	mu_check(issorted_stack(&st) == 1);
 	free_stack(&st);
 
 	new_stack(&st);
-	append_stack(-1);
-	append_stack(0);
-	append_stack(2);
-	append_stack(1);
-	append_stack(3);
+	append_stack(&st, -1);
+	append_stack(&st, 0);
+	append_stack(&st, 2);
+	append_stack(&st, 1);
+	append_stack(&st, 3);
 	mu_check(issorted_stack(&st) == 0);
 	free_stack(&st);
 
 	new_stack(&st);
-	append_stack(3);
-	append_stack(2);
-	append_stack(1);
-	append_stack(0);
-	append_stack(-1);
+	append_stack(&st, 3);
+	append_stack(&st, 2);
+	append_stack(&st, 1);
+	append_stack(&st, 0);
+	append_stack(&st, -1);
 	mu_check(issorted_stack(&st) == 0);
 	free_stack(&st);
 
 	new_stack(&st);
-	append_stack(1);
+	append_stack(&st, 1);
 	mu_check(issorted_stack(&st) == 1);
 	free_stack(&st);
 }
@@ -205,40 +206,40 @@ MU_TEST(test_isset) {
 	t_stack st;
 
 	new_stack(&st);
-	append_stack(1);
+	append_stack(&st, 1);
 	mu_check(isset_stack(&st) == 1);
 	free_stack(&st);
 
 	new_stack(&st);
-	append_stack(1);
-	append_stack(-1);
+	append_stack(&st, 1);
+	append_stack(&st, -1);
 	mu_check(isset_stack(&st) == 1);
 	free_stack(&st);
 
 	new_stack(&st);
-	append_stack(-1);
-	append_stack(1);
+	append_stack(&st, -1);
+	append_stack(&st, 1);
 	mu_check(isset_stack(&st) == 1);
 	free_stack(&st);
 
 	new_stack(&st);
-	append_stack(1);
-	append_stack(1);
+	append_stack(&st, 1);
+	append_stack(&st, 1);
 	mu_check(isset_stack(&st) == 0);
 	free_stack(&st);
 
 	new_stack(&st);
-	append_stack(1);
-	append_stack(2);
-	append_stack(1);
+	append_stack(&st, 1);
+	append_stack(&st, 2);
+	append_stack(&st, 1);
 	mu_check(isset_stack(&st) == 0);
 	free_stack(&st);
 
 	new_stack(&st);
-	append_stack(1);
-	append_stack(2);
-	append_stack(1);
-	append_stack(3);
+	append_stack(&st, 1);
+	append_stack(&st, 2);
+	append_stack(&st, 1);
+	append_stack(&st, 3);
 	mu_check(isset_stack(&st) == 0);
 	free_stack(&st);
 }
@@ -247,11 +248,11 @@ MU_TEST(test_get) {
 	t_stack st;
 
 	new_stack(&st);
-	append_stack(-1);
-	append_stack(0);
-	append_stack(1);
-	append_stack(2);
-	append_stack(3);
+	append_stack(&st, -1);
+	append_stack(&st, 0);
+	append_stack(&st, 1);
+	append_stack(&st, 2);
+	append_stack(&st, 3);
 	mu_check(get_stack(&st, 0) == -1);
 	mu_check(get_stack(&st, 1) == 0);
 	mu_check(get_stack(&st, 2) == 1);
@@ -264,11 +265,11 @@ MU_TEST(test_reverse_get) {
 	t_stack st;
 
 	new_stack(&st);
-	append_stack(-1);
-	append_stack(0);
-	append_stack(1);
-	append_stack(2);
-	append_stack(3);
+	append_stack(&st, -1);
+	append_stack(&st, 0);
+	append_stack(&st, 1);
+	append_stack(&st, 2);
+	append_stack(&st, 3);
 	mu_check(reverse_get_stack(&st, 0) == 3);
 	mu_check(reverse_get_stack(&st, 1) == 2);
 	mu_check(reverse_get_stack(&st, 2) == 1);
@@ -281,37 +282,37 @@ MU_TEST(test_min) {
 	t_stack st;
 
 	new_stack(&st);
-	append_stack(INT_MAX);
-	append_stack(0);
-	append_stack(2);
-	append_stack(1);
-	append_stack(INT_MIN);
+	append_stack(&st, INT_MAX);
+	append_stack(&st, 0);
+	append_stack(&st, 2);
+	append_stack(&st, 1);
+	append_stack(&st, INT_MIN);
 	mu_check(min_stack(&st) == INT_MIN);
 	free_stack(&st);
 
 	new_stack(&st);
-	append_stack(0);
-	append_stack(2);
-	append_stack(1);
-	append_stack(INT_MIN);
+	append_stack(&st, 0);
+	append_stack(&st, 2);
+	append_stack(&st, 1);
+	append_stack(&st, INT_MIN);
+	mu_check(min_stack(&st) == INT_MIN);
+	free_stack(&st);
+
+	new_stack(&st);
+	append_stack(&st, 2);
+	append_stack(&st, 0);
+	append_stack(&st, 1);
 	mu_check(min_stack(&st) == 0);
 	free_stack(&st);
 
 	new_stack(&st);
-	append_stack(2);
-	append_stack(0);
-	append_stack(1);
-	mu_check(min_stack(&st) == 0);
-	free_stack(&st);
-
-	new_stack(&st);
-	append_stack(2);
-	append_stack(1);
+	append_stack(&st, 2);
+	append_stack(&st, 1);
 	mu_check(min_stack(&st) == 1);
 	free_stack(&st);
 
 	new_stack(&st);
-	append_stack(1);
+	append_stack(&st, 1);
 	mu_check(min_stack(&st) == 1);
 	free_stack(&st);
 }
@@ -320,37 +321,37 @@ MU_TEST(test_max) {
 	t_stack st;
 
 	new_stack(&st);
-	append_stack(INT_MAX);
-	append_stack(0);
-	append_stack(2);
-	append_stack(1);
-	append_stack(INT_MIN);
+	append_stack(&st, INT_MAX);
+	append_stack(&st, 0);
+	append_stack(&st, 2);
+	append_stack(&st, 1);
+	append_stack(&st, INT_MIN);
 	mu_check(max_stack(&st) == INT_MAX);
 	free_stack(&st);
 
 	new_stack(&st);
-	append_stack(0);
-	append_stack(2);
-	append_stack(1);
-	append_stack(INT_MIN);
+	append_stack(&st, 0);
+	append_stack(&st, 2);
+	append_stack(&st, 1);
+	append_stack(&st, INT_MIN);
 	mu_check(max_stack(&st) == 2);
 	free_stack(&st);
 
 	new_stack(&st);
-	append_stack(2);
-	append_stack(0);
-	append_stack(1);
+	append_stack(&st, 2);
+	append_stack(&st, 0);
+	append_stack(&st, 1);
 	mu_check(max_stack(&st) == 2);
 	free_stack(&st);
 
 	new_stack(&st);
-	append_stack(2);
-	append_stack(1);
+	append_stack(&st, 2);
+	append_stack(&st, 1);
 	mu_check(max_stack(&st) == 2);
 	free_stack(&st);
 
 	new_stack(&st);
-	append_stack(1);
+	append_stack(&st, 1);
 	mu_check(max_stack(&st) == 1);
 	free_stack(&st);
 }
@@ -359,23 +360,23 @@ MU_TEST(test_avg) {
 	t_stack st;
 
 	new_stack(&st);
-	append_stack(-1);
-	append_stack(0);
-	append_stack(1);
-	append_stack(2);
-	append_stack(3);
+	append_stack(&st, -1);
+	append_stack(&st, 0);
+	append_stack(&st, 1);
+	append_stack(&st, 2);
+	append_stack(&st, 3);
 	mu_check(avg_stack(&st) == 1);
 	free_stack(&st);
 
 	new_stack(&st);
-	append_stack(-1);
-	append_stack(1);
-	append_stack(3);
+	append_stack(&st, -1);
+	append_stack(&st, 1);
+	append_stack(&st, 3);
 	mu_check(avg_stack(&st) == 1);
 	free_stack(&st);
 
 	new_stack(&st);
-	append_stack(1);
+	append_stack(&st, 1);
 	mu_check(avg_stack(&st) == 1);
 	free_stack(&st);
 }
@@ -384,43 +385,43 @@ MU_TEST(test_search) {
 	t_stack st;
 
 	new_stack(&st);
-	append_stack(-1);
-	append_stack(0);
-	append_stack(1);
-	append_stack(2);
-	append_stack(3);
+	append_stack(&st, -1);
+	append_stack(&st, 0);
+	append_stack(&st, 1);
+	append_stack(&st, 2);
+	append_stack(&st, 3);
 	mu_check(search_stack(&st, 1, 0) == 2);
 	free_stack(&st);
 
 	new_stack(&st);
-	append_stack(1);
-	append_stack(0);
-	append_stack(-1);
-	append_stack(3);
+	append_stack(&st, 1);
+	append_stack(&st, 0);
+	append_stack(&st, -1);
+	append_stack(&st, 3);
 	mu_check(search_stack(&st, 2, 1) == 3);
 	free_stack(&st);
 
 	new_stack(&st);
-	append_stack(1);
-	append_stack(0);
-	append_stack(-1);
-	append_stack(3);
+	append_stack(&st, 1);
+	append_stack(&st, 0);
+	append_stack(&st, -1);
+	append_stack(&st, 3);
 	mu_check(search_stack(&st, 4, 0) == -1);
 	free_stack(&st);
 
 	new_stack(&st);
-	append_stack(1);
-	append_stack(-1);
-	append_stack(0);
-	append_stack(3);
+	append_stack(&st, 1);
+	append_stack(&st, -1);
+	append_stack(&st, 0);
+	append_stack(&st, 3);
 	mu_check(search_stack(&st, 0, -1) == 1);
 	free_stack(&st);
 
 	new_stack(&st);
-	append_stack(1);
-	append_stack(-1);
-	append_stack(0);
-	append_stack(3);
+	append_stack(&st, 1);
+	append_stack(&st, -1);
+	append_stack(&st, 0);
+	append_stack(&st, 3);
 	mu_check(search_stack(&st, 100, -1) == 0);
 	free_stack(&st);
 }
@@ -429,48 +430,48 @@ MU_TEST(test_reverse_search) {
 	t_stack st;
 
 	new_stack(&st);
-	append_stack(-1);
-	append_stack(0);
-	append_stack(1);
-	append_stack(2);
-	append_stack(3);
+	append_stack(&st, -1);
+	append_stack(&st, 0);
+	append_stack(&st, 1);
+	append_stack(&st, 2);
+	append_stack(&st, 3);
 	mu_check(reverse_search_stack(&st, 1, 0) == 2);
 	free_stack(&st);
 
 	new_stack(&st);
-	append_stack(1);
-	append_stack(0);
-	append_stack(-1);
-	append_stack(3);
+	append_stack(&st, 1);
+	append_stack(&st, 0);
+	append_stack(&st, -1);
+	append_stack(&st, 3);
 	mu_check(reverse_search_stack(&st, 2, 1) == 0);
 	free_stack(&st);
 
 	new_stack(&st);
-	append_stack(1);
-	append_stack(0);
-	append_stack(-1);
-	append_stack(3);
+	append_stack(&st, 1);
+	append_stack(&st, 0);
+	append_stack(&st, -1);
+	append_stack(&st, 3);
 	mu_check(reverse_search_stack(&st, 4, 0) == -1);
 	free_stack(&st);
 
 	new_stack(&st);
-	append_stack(1);
-	append_stack(-1);
-	append_stack(0);
-	append_stack(3);
+	append_stack(&st, 1);
+	append_stack(&st, -1);
+	append_stack(&st, 0);
+	append_stack(&st, 3);
 	mu_check(reverse_search_stack(&st, 0, -1) == 1);
 	free_stack(&st);
 
 	new_stack(&st);
-	append_stack(1);
-	append_stack(-1);
-	append_stack(0);
-	append_stack(3);
+	append_stack(&st, 1);
+	append_stack(&st, -1);
+	append_stack(&st, 0);
+	append_stack(&st, 3);
 	mu_check(reverse_search_stack(&st, 100, -1) == 0);
 	free_stack(&st);
 }
 
-MU_TEST_SUITE(stack_suit) {
+void stack_suite(void) {
 	MU_RUN_TEST(test_new);
 	MU_RUN_TEST(test_push);
 	MU_RUN_TEST(test_pull);
@@ -487,4 +488,5 @@ MU_TEST_SUITE(stack_suit) {
 	MU_RUN_TEST(test_avg);
 	MU_RUN_TEST(test_search);
 	MU_RUN_TEST(test_reverse_search);
+	MU_REPORT();
 }

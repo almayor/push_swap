@@ -6,11 +6,11 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 00:32:01 by unite             #+#    #+#             */
-/*   Updated: 2020/05/13 15:10:16 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/15 02:40:16 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "sorts_private.h"
 
 
 static void	push_once(t_stack *stackA, t_stack *stackB, int ceil)
@@ -34,14 +34,14 @@ static void	push_once(t_stack *stackA, t_stack *stackB, int ceil)
 		prepare_stacks_rev_fwd(stackA, stackB, jA, iB);
 	if (iA > jA && iB > jB)
 		prepare_stacks_rev_rev(stackA, stackB, jA, jB);
-	perform_operation(stackA, stackB, 'pb');
+	perform_operation(stackA, stackB, "pb");
 }
 
 void		advanced_sort(t_stack *stackA, t_stack *stackB)
 {
-	size_t		batchsize;
-	int 		i;
-	int			j;
+	int		batchsize;
+	int 	i;
+	int		j;
 
 	batchsize = stackA->size / NBATCHES;
 	i = 0;
@@ -54,7 +54,7 @@ void		advanced_sort(t_stack *stackA, t_stack *stackB)
 	while (stackA->size > 0)
 		push_once(stackA, stackB, INT_MAX);
 	while (stackB->start->value != stackB->size)
-		perform_operation(stackA, stackB, 'rrb');
+		perform_operation(stackA, stackB, "rrb");
 	while (stackB->start)
-		perform_operation(stackA, stackB, 'pa');
+		perform_operation(stackA, stackB, "pa");
 }

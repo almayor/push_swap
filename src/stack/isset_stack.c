@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 19:28:08 by unite             #+#    #+#             */
-/*   Updated: 2020/05/13 15:13:24 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/15 03:24:45 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int	isset_stack(const t_stack *stack)
 	ili = stack->start;
 	while (ili->next)
 	{
-		jli = ili;
-		while (jli->next)
+		jli = ili->next;
+		while (jli)
 		{
-			if (jli->value == jli->next->value)
+			if (jli->value == ili->value)
 				return (0);
 			jli = jli->next;
 		}

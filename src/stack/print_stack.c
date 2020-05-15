@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/23 03:17:26 by unite             #+#    #+#             */
-/*   Updated: 2020/05/12 00:26:01 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/15 02:35:11 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	print_stack(const t_stack *stack)
 
 	link = stack->start;
 	if (!link)
-		return (0);
+		return ;
 	ft_printf("Forward links: %d", link->value);
 	while ((link = link->next))
 		ft_printf("->%d", link->value);

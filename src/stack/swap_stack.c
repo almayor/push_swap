@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 23:08:41 by unite             #+#    #+#             */
-/*   Updated: 2020/05/13 18:26:31 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/15 02:47:47 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	swap_stack(t_stack *stack)
 {
+	if (stack->size < 2)
+		return ;
 	stack->start->previous = stack->start->next;
 	stack->start->next = stack->start->next->next;
 	stack->start->previous->next = stack->start;

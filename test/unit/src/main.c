@@ -1,7 +1,8 @@
 #include "minunit.h"
 
+void stack_suite(void);
+
 int	main() {
 	MU_RUN_SUITE(stack_suite);
-	MU_REPORT();
-	return MU_EXIT_CODE:
+	return MU_EXIT_CODE;
 }

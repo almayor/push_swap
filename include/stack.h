@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/15 10:32:31 by unite             #+#    #+#             */
-/*   Updated: 2020/05/13 17:55:57 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/15 02:34:50 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef	struct	s_link
 
 typedef struct	s_stack
 {
-	size_t			size;
+	int				size;
 	struct s_link	*start;
 	struct s_link	*end;
 }				t_stack;

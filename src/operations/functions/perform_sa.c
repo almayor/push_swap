@@ -6,11 +6,11 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 23:15:07 by unite             #+#    #+#             */
-/*   Updated: 2020/05/13 18:22:57 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/15 02:39:18 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "operations.h"
+#include "operations_private.h"
 
 int	perform_sa(t_stack *sa, t_stack *sb)
 {

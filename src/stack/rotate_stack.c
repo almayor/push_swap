@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 23:09:00 by unite             #+#    #+#             */
-/*   Updated: 2020/05/13 15:11:09 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/15 02:48:05 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	rotate_stack(t_stack *stack)
 {
+	if (stack->size < 2)
+		return ;
 	stack->end->next = stack->start;
 	stack->start->previous = stack->end;
 	stack->start = stack->start->next;

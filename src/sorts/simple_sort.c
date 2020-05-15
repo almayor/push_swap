@@ -6,11 +6,11 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 13:07:16 by unite             #+#    #+#             */
-/*   Updated: 2020/05/13 15:09:58 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/15 02:40:12 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "sorts_private.h"
 
 static void     sort_stackA(t_stack *stackA, t_stack *stackB)
 {
@@ -75,4 +75,3 @@ void         	simple_sort(t_stack *stackA, t_stack *stackB)
 		merge_stacks(stackA, stackB);
 	}
 }
-

@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 18:09:07 by unite             #+#    #+#             */
-/*   Updated: 2020/05/13 18:21:13 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/15 02:37:20 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include "stack.h"
 # include "libftprintfgnl.h"
+# include <limits.h>
+
+# define NBATCHES	4
 
 int		perform_operation(t_stack *sa, t_stack *sb, char *oper);
 

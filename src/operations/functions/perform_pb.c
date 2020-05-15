@@ -6,11 +6,11 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 23:15:52 by unite             #+#    #+#             */
-/*   Updated: 2020/05/13 18:24:03 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/15 02:39:29 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "operations.h"
+#include "operations_private.h"
 
 int	perform_pb(t_stack *sa, t_stack *sb)
 {
