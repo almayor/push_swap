@@ -6,7 +6,7 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/05/15 03:18:33 by unite            ###   ########.fr        #
+#    Updated: 2020/05/15 18:44:31 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,8 @@ TEST_NAME = test/test
 
 TEST_SRC_NAME = \
 main.c \
-stack_suite.c
+stack_suite.c \
+operations_suite.c
 
 ################################################################################
 
@@ -81,11 +82,7 @@ LINK = gcc -lftprintfgnl -L $(PATHL)
 CFLAGS += -Wall -Wextra -Werror
 CFLAGS += -O3 -std=gnu11 -ffast-math -march=native
 CFLAGS += -MMD
-CFLAGS += $(foreach path, $(PATHI), -I$(path))
-
-TEST_CFLAGS += -O3 -std=gnu11 -ffast-math -march=native
-TEST_CFLAGS += -MMD
-TEST_CFLAGS += $(foreach path, $(PATHI) $(TEST_PATHI), -I$(path))
+CFLAGS += $(foreach path, $(PATHI) $(TEST_PATHI), -I$(path))
 
 ################################################################################
 
@@ -126,7 +123,7 @@ $(PATHO)/%.o : $(PATHS)/%.c
 
 $(TEST_PATHO)/%.o : $(TEST_PATHS)/%.c
 	mkdir -p $(@D)
-	$(COMPILE) $(TEST_CFLAGS) $< -o $@
+	$(COMPILE) $(CFLAGS) $< -o $@
 
 ################################################################################
 

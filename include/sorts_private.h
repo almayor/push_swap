@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorts.h                                            :+:      :+:    :+:   */
+/*   sorts_private.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 18:09:07 by unite             #+#    #+#             */
-/*   Updated: 2020/05/15 02:37:20 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/15 16:24:28 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SORTS_H
-# define SORTS_H
+#ifndef SORTS_PRIVATE_H
+# define SORTS_PRIVATE_H
 
 # include "stack.h"
 # include "libftprintfgnl.h"

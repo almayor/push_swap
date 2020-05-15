@@ -57,6 +57,8 @@ MU_TEST(test_pull) {
 	mu_check(val == 0);
 	val = pull_stack(&st);
 	mu_check(val == INT_MIN);
+	val = pull_stack(&st);
+	mu_check(val == 0);
 }
 
 MU_TEST(test_append) {
@@ -471,7 +473,8 @@ MU_TEST(test_reverse_search) {
 	free_stack(&st);
 }
 
-void stack_suite(void) {
+int stack_suite(void) {
+	ft_printf("Running %s:\n", __FUNCTION__);
 	MU_RUN_TEST(test_new);
 	MU_RUN_TEST(test_push);
 	MU_RUN_TEST(test_pull);
@@ -489,4 +492,5 @@ void stack_suite(void) {
 	MU_RUN_TEST(test_search);
 	MU_RUN_TEST(test_reverse_search);
 	MU_REPORT();
+	return (MU_EXIT_CODE);
 }
