@@ -51,14 +51,14 @@ static void	push_once(t_stack *stack_a, t_stack *stack_b, int batch_ceil)
 	n_rra = stack_a->size - n_ra;
 	n_rrb = stack_b->size - n_rb;
 	if (ft_max(n_ra, n_rb) <= ft_max(n_rra, n_rrb) &&
-		ft_max(n_ra, n_rb) <= ft_max(n_ra, n_rra) + ft_max(n_rb, n_rrb))
+		ft_max(n_ra, n_rb) <= ft_min(n_ra, n_rra) + ft_min(n_rb, n_rrb))
 		prepare_stacks_ra_rb(stack_a, stack_b, n_ra, n_rb);
-	else if (ft_max(n_rra, n_rrb) <= ft_max(n_ra, n_rra) + ft_max(n_rb, n_rrb))
+	else if (ft_max(n_rra, n_rrb) <= ft_min(n_ra, n_rra) + ft_min(n_rb, n_rrb))
 		prepare_stacks_rra_rrb(stack_a, stack_b, n_rra, n_rrb);
 	else if (n_ra + n_rrb <= n_rb + n_rra)
 		prepare_stacks_ra_rrb(stack_a, stack_b, n_ra, n_rrb);
 	else
-		prepare_stacks_ra_rrb(stack_a, stack_b, n_rra, n_rb);
+		prepare_stacks_rra_rb(stack_a, stack_b, n_rra, n_rb);
 	perform_operation(stack_a, stack_b, "pb");
 }
 

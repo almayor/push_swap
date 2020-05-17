@@ -18,7 +18,7 @@
 # include <errno.h>
 # include <limits.h>
 
-# define NBATCHES	5
+# define NBATCHES	20
 
 typedef struct	s_operation
 {
