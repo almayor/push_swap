@@ -4,3 +4,4 @@ obj
 *.d
 CMakeList.txt
 *.pickle
+cmake-build-debug
