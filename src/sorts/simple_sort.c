@@ -6,14 +6,15 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 13:07:16 by unite             #+#    #+#             */
-/*   Updated: 2020/05/15 02:40:12 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/17 02:21:02 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sorts_private.h"
+#include "push_swap.h"
 
 static void     sort_stackA(t_stack *stackA, t_stack *stackB)
 {
+
 	int max;
 
 	max = max_stack(stackA);
@@ -45,7 +46,7 @@ static void      split_stackA(t_stack *stackA, t_stack *stackB, int minbound)
 
 	i = 0;
 	n = stackA->size;
-	while (i < n)
+	while (errno == 0 && i < n)
 	{
 		if (stackA->start->value <= minbound)
 			perform_operation(stackA, stackB, "pb");
@@ -57,7 +58,7 @@ static void      split_stackA(t_stack *stackA, t_stack *stackB, int minbound)
 
 static void      merge_stacks(t_stack *stackA, t_stack *stackB)
 {
-	while (stackB->start)
+	while (errno == 0 && stackB->start)
 		perform_operation(stackA, stackB, "pa");
 }
 
@@ -67,7 +68,7 @@ void         	simple_sort(t_stack *stackA, t_stack *stackB)
 		return ;
 	if (stackA->size <= 3)
 		sort_stackA(stackA, stackB);
-	else
+	else if (!issorted_stack(stackA))
 	{
 		split_stackA(stackA, stackB, avg_stack(stackA));
 		sort_stackA(stackA, stackB);

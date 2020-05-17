@@ -6,15 +6,14 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 23:15:52 by unite             #+#    #+#             */
-/*   Updated: 2020/05/15 02:39:20 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/17 05:00:28 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "operations_private.h"
+#include "push_swap.h"
 
-int	perform_rrr(t_stack *sa, t_stack *sb)
+void	perform_rrr(t_stack *stack_a, t_stack *stack_b)
 {
-	perform_rra(sa, sb);
-	perform_rrb(sa, sb);
-	return (0);
+	perform_rra(stack_a, stack_b);
+	perform_rrb(stack_a, stack_b);
 }

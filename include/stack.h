@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/15 10:32:31 by unite             #+#    #+#             */
-/*   Updated: 2020/05/15 02:34:50 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/17 02:24:54 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,10 @@ void			new_stack(t_stack *stack);
 void			print_stack(const t_stack *stack);
 int				pull_stack(t_stack *stack);
 int				push_stack(t_stack *stack, int value);
-int				reverse_get_stack(const t_stack *stack, int index);
 void			reverse_rotate_stack(t_stack *stack);
-int				reverse_search_stack(const t_stack *stack, int num,
-									int control);
 void			rotate_stack(t_stack *stack);
-int				search_stack(const t_stack *stack, int num, int control);
+int				search_stack(const t_stack *stack, int num, int comp,
+							int order);
 void			swap_stack(t_stack *stack);
 
 #endif

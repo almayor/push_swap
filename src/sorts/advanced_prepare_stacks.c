@@ -6,52 +6,56 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 22:10:28 by unite             #+#    #+#             */
-/*   Updated: 2020/05/15 02:40:20 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/17 02:18:36 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sorts_private.h"
+#include "push_swap.h"
 
-void	prepare_stacks_fwd_fwd(t_stack *stackA, t_stack *stackB, int iA, int iB)
+void	prepare_stacks_ra_rb(t_stack *stack_a, t_stack *stack_b,
+							int n_ra, int n_rb)
 {
-	while (iA > 0 && iB > 0)
+	while (n_ra > 0 && n_rb > 0)
 	{
-		perform_operation(stackA, stackB, "rrr");
-		--iA;
-		--iB;
+		perform_operation(stack_a, stack_b, "rr");
+		--n_ra;
+		--n_rb;
 	}
-	while (iA-- > 0)
-		perform_operation(stackA, stackB, "rra");
-	while (iB-- > 0)
-		perform_operation(stackA, stackB, "rrb");
+	while (n_ra-- > 0)
+		perform_operation(stack_a, stack_b, "ra");
+	while (n_rb-- > 0)
+		perform_operation(stack_a, stack_b, "rb");
 }
 
-void	prepare_stacks_fwd_rev(t_stack *stackA, t_stack *stackB, int iA, int jB)
+void	prepare_stacks_rra_rrb(t_stack *stack_a, t_stack *stack_b,
+							int n_rra, int n_rrb)
 {
-	while (iA-- > 0)
-		perform_operation(stackA, stackB, "rra");
-	while (jB-- > 0)
-		perform_operation(stackA, stackB, "rb");
-}
-
-void	prepare_stacks_rev_fwd(t_stack *stackA, t_stack *stackB, int jA, int iB)
-{
-	while (jA-- > 0)
-		perform_operation(stackA, stackB, "ra");
-	while (iB-- > 0)
-		perform_operation(stackA, stackB, "rrb");
-}
-
-void	prepare_stacks_rev_rev(t_stack *stackA, t_stack *stackB, int jA, int jB)
-{
-	while (jA > 0 && jB > 0)
+	while (n_rra > 0 && n_rrb > 0)
 	{
-		perform_operation(stackA, stackB, "rr");
-		--jA;
-		--jB;
+		perform_operation(stack_a, stack_b, "rrr");
+		--n_rra;
+		--n_rrb;
 	}
-	while (jA-- > 0)
-		perform_operation(stackA, stackB, "ra");
-	while (jB-- > 0)
-		perform_operation(stackA, stackB, "rb");
+	while (n_rra-- > 0)
+		perform_operation(stack_a, stack_b, "rra");
+	while (n_rrb-- > 0)
+		perform_operation(stack_a, stack_b, "rrb");
+}
+
+void	prepare_stacks_ra_rrb(t_stack *stack_a, t_stack *stack_b,
+							int n_ra, int n_rrb)
+{
+	while (n_ra-- > 0)
+		perform_operation(stack_a, stack_b, "ra");
+	while (n_rrb-- > 0)
+		perform_operation(stack_a, stack_b, "rrb");
+}
+
+void	prepare_stacks_rra_rb(t_stack *stack_a, t_stack *stack_b,
+							int n_rra, int n_rb)
+{
+	while (n_rra-- > 0)
+		perform_operation(stack_a, stack_b, "rra");
+	while (n_rb-- > 0)
+		perform_operation(stack_a, stack_b, "rb");
 }

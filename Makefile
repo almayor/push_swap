@@ -6,7 +6,7 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/05/15 18:44:31 by unite            ###   ########.fr        #
+#    Updated: 2020/05/17 05:02:48 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,11 +37,9 @@ operations/functions/perform_pb.c \
 stack/issorted_stack.c \
 stack/min_stack.c \
 stack/rotate_stack.c \
-stack/reverse_get_stack.c \
 stack/new_stack.c \
 stack/push_stack.c \
 stack/free_stack.c \
-stack/reverse_search_stack.c \
 stack/avg_stack.c \
 stack/reverse_rotate_stack.c \
 stack/pull_stack.c \
@@ -56,28 +54,37 @@ sorts/advanced_sort.c \
 sorts/simple_sort.c \
 sorts/advanced_prepare_stacks.c \
 
-TEST_NAME = test/test
+TEST_NAME = unit-tests
 
 TEST_SRC_NAME = \
 main.c \
 stack_suite.c \
-operations_suite.c
+operations_suite.c \
+utils_suite.c
 
 ################################################################################
 
-PATHS = src
-PATHO = obj
-PATHI = include $(PATHL)
-PATHL = libftprintfgnl
+PATH = .
+PATHS = $(PATH)/src
+PATHO = $(PATH)/obj
+PATHL = $(PATH)/libftprintfgnl
+PATHI = $(PATH)/include $(PATHL)
 
-TEST_PATHS = test/unit/src
-TEST_PATHO = test/unit/obj
-TEST_PATHI = test/unit/include
+TEST_PATH = test/unit
+TEST_PATHS = $(TEST_PATH)/src
+TEST_PATHO = $(TEST_PATH)/obj
+TEST_PATHI = $(TEST_PATH)/include
 
 ################################################################################
 
-COMPILE = gcc -c
-LINK = gcc -lftprintfgnl -L $(PATHL)
+CC = /usr/bin/gcc
+RM = /bin/rm
+MKDIR = /bin/mkdir
+
+################################################################################
+
+COMPILE = $(CC) -c
+LINK = $(CC) -lftprintfgnl -L $(PATHL)
 
 CFLAGS += -Wall -Wextra -Werror
 CFLAGS += -O3 -std=gnu11 -ffast-math -march=native
@@ -104,25 +111,29 @@ OBJ_PS = $(patsubst %.c, $(PATHO)/%.o, $(SRC_PS_NAME))
 TEST_SRC = $(patsubst %.c, $(TEST_PATHS)/%.c, $(TEST_SRC_NAME))
 TEST_OBJ = $(patsubst %.c, $(TEST_PATHO)/%.o, $(TEST_SRC_NAME))
 
+BIN_CK = $(PATH)/$(NAME_CK)
+BIN_PS = $(PATH)/$(NAME_PS)
+TEST_BIN = $(TEST_PATH)/$(TEST_NAME)
+
 ################################################################################
 
-$(NAME_CK) : $(OBJ_CK) $(OBJ)
+$(BIN_CK) : $(OBJ_CK) $(OBJ)
 	$(LINK) $^ -o $@
 
-$(NAME_PS) : $(OBJ_PS) $(OBJ)
+$(BIN_PS) : $(OBJ_PS) $(OBJ)
 	$(LINK) $^ -o $@
 
-$(TEST_NAME) : $(TEST_OBJ) $(OBJ)
+$(TEST_BIN) : $(TEST_OBJ) $(OBJ)
 	$(LINK) $^ -o $@
 
 ################################################################################
 
 $(PATHO)/%.o : $(PATHS)/%.c
-	mkdir -p $(@D)
+	$(MKDIR) -p $(@D)
 	$(COMPILE) $(CFLAGS) $< -o $@
 
 $(TEST_PATHO)/%.o : $(TEST_PATHS)/%.c
-	mkdir -p $(@D)
+	$(MKDIR) -p $(@D)
 	$(COMPILE) $(CFLAGS) $< -o $@
 
 ################################################################################
@@ -136,22 +147,25 @@ DEP += $(patsubst %.c, $(TEST_PATHO)/%.d, $(TEST_SRC_NAME))
 
 ################################################################################
 
+.DEFAULT_GOAL = all
+
 .PHONY : all clean fclean re test
 
-all : $(PATHL)/libftprintfgnl.a $(NAME_CK) $(NAME_PS)
+all : $(PATHL)/libftprintfgnl.a $(BIN_CK) $(BIN_PS)
 
 fclean : clean
-	rm -f $(NAME_CK) $(NAME_PS) $(NAME_TEST)
+	$(RM) -f $(BIN_CK) $(BIN_PS) $(TEST_BIN)
 
 clean :
-	rm -rf $(PATHO)
+	$(RM) -rf $(PATHO)
+	$(MAKE) -C $(PATHL) fclean
 
 re : fclean all
 
-test : all $(TEST_NAME)
-	./$(TEST_NAME)
+test : all $(TEST_BIN)
+	./$(TEST_BIN)
 
 $(PATHL)/libftprintfgnl.a :
-	make -C $(PATHL)
+	$(MAKE) -C $(PATHL)
 
 ################################################################################

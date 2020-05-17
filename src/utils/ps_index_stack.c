@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 22:42:53 by unite             #+#    #+#             */
-/*   Updated: 2020/05/13 17:05:21 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/15 19:40:26 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int			ps_index_stack(t_stack *stack)
 	li = stack->start;
 	while (li)
 	{
-		if (push_stack(&index_stack, get_index(stack, li->value)))
+		if (append_stack(&index_stack, get_index(stack, li->value)))
 		{
 			free_stack(&index_stack);
 			return ((errno = ENOMEM));

@@ -6,13 +6,13 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 23:15:52 by unite             #+#    #+#             */
-/*   Updated: 2020/05/15 02:39:31 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/17 01:44:51 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "operations_private.h"
+#include "push_swap.h"
 
-int	perform_pa(t_stack *sa, t_stack *sb)
+void	perform_pa(t_stack *stack_a, t_stack *stack_b)
 {
-	return (push_stack(sa, pull_stack(sb)));
+	push_stack(stack_a, pull_stack(stack_b));
 }

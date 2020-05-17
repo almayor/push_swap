@@ -6,27 +6,27 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 19:55:36 by unite             #+#    #+#             */
-/*   Updated: 2020/05/15 02:35:45 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/17 02:24:25 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 
-int	search_stack(const t_stack *stack, int num, int control)
+int	search_stack(const t_stack *stack, int num, int comp, int order)
 {
 	t_link	*link;
 	int		i;
 
-	i = 0;
-	link = stack->start;
+	i = order ? stack->size - 1 : 0;
+	link = order ? stack->end : stack->start;
 	while (link)
 	{
-		if ((control > 0 && link->value >= num) ||
-			(control < 0 && link->value <= num) ||
-			(control == 0 && link->value == num))
+		if ((comp > 0 && link->value >= num) ||
+			(comp < 0 && link->value <= num) ||
+			(comp == 0 && link->value == num))
 			return (i);
-		i++;
-		link = link->next;
+		i = order ? i - 1 : i + 1;
+		link = order ? link->previous : link->next;
 	}
 	return (-1);
 }

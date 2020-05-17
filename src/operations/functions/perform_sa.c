@@ -6,15 +6,14 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 23:15:07 by unite             #+#    #+#             */
-/*   Updated: 2020/05/15 02:39:18 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/17 01:44:58 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "operations_private.h"
+#include "push_swap.h"
 
-int	perform_sa(t_stack *sa, t_stack *sb)
+void	perform_sa(t_stack *stack_a, t_stack *stack_b)
 {
-	(void)sb;
-	swap_stack(sa);
-	return (0);
+	(void)stack_b;
+	swap_stack(stack_a);
 }

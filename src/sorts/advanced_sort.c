@@ -6,55 +6,82 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 00:32:01 by unite             #+#    #+#             */
-/*   Updated: 2020/05/15 02:40:16 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/17 05:08:20 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sorts_private.h"
+#include "push_swap.h"
 
-
-static void	push_once(t_stack *stackA, t_stack *stackB, int ceil)
+static int	get_nra(t_stack *stack_a, int batch_ceil)
 {
-	int		iA;
-	int		jA;
-	int		value;
-	int		iB;
-	int		jB;
+	int	ifirst;
+	int	ilast;
 
-	iA = search_stack(stackA, ceil, -1);
-	jA = reverse_search_stack(stackA, ceil, -1) + 1;
-	value = iA < jA ? get_stack(stackA, iA) : reverse_get_stack(stackA, jA);
-	iB = search_stack(stackB, value, 1);
-	jB = reverse_search_stack(stackB, value, 1) + 1;
-	if (iA < jA && iB < jB)
-		prepare_stacks_fwd_fwd(stackA, stackB, iA, iB);
-	if (iA < jA && iB > jB)
-		prepare_stacks_fwd_rev(stackA, stackB, iA, jB);
-	if (iA > jA && iB < jB)
-		prepare_stacks_rev_fwd(stackA, stackB, jA, iB);
-	if (iA > jA && iB > jB)
-		prepare_stacks_rev_rev(stackA, stackB, jA, jB);
-	perform_operation(stackA, stackB, "pb");
+	ifirst = search_stack(stack_a, batch_ceil, -1, 0);
+	ilast = search_stack(stack_a, batch_ceil, -1, 1);
+	if (ifirst <= stack_a->size - 1 - ilast)
+		return (ifirst);
+	else
+		return (ilast);
 }
 
-void		advanced_sort(t_stack *stackA, t_stack *stackB)
+static int	get_nrb(t_stack *stack_b, int value)
+{
+	if (stack_b->size < 2)
+		return (0);
+	if (max_stack(stack_b) < value || min_stack(stack_b) > value)
+		return (search_stack(stack_b, max_stack(stack_b), 0, 0));
+	if (stack_b->start->value < value && stack_b->end->value > value)
+		return (0);
+	if (stack_b->start->value > value)
+		return (search_stack(stack_b, value, -1, 0));
+	else
+		return (search_stack(stack_b, value, 1, 1) + 1);
+}
+
+static void	push_once(t_stack *stack_a, t_stack *stack_b, int batch_ceil)
+{
+	int	n_ra;
+	int	n_rb;
+	int	n_rra;
+	int	n_rrb;
+
+	n_ra = get_nra(stack_a, batch_ceil);
+	n_rb = get_nrb(stack_b, get_stack(stack_a, n_ra));
+	n_rra = stack_a->size - n_ra;
+	n_rrb = stack_b->size - n_rb;
+	if (ft_max(n_ra, n_rb) <= ft_max(n_rra, n_rrb) &&
+		ft_max(n_ra, n_rb) <= ft_max(n_ra, n_rra) + ft_max(n_rb, n_rrb))
+		prepare_stacks_ra_rb(stack_a, stack_b, n_ra, n_rb);
+	else if (ft_max(n_rra, n_rrb) <= ft_max(n_ra, n_rra) + ft_max(n_rb, n_rrb))
+		prepare_stacks_rra_rrb(stack_a, stack_b, n_rra, n_rrb);
+	else if (n_ra + n_rrb <= n_rb + n_rra)
+		prepare_stacks_ra_rrb(stack_a, stack_b, n_ra, n_rrb);
+	else
+		prepare_stacks_ra_rrb(stack_a, stack_b, n_rra, n_rb);
+	perform_operation(stack_a, stack_b, "pb");
+}
+
+void		advanced_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	int		batchsize;
 	int 	i;
 	int		j;
 
-	batchsize = stackA->size / NBATCHES;
+	if (issorted_stack(stack_a))
+		return ;
+	batchsize = stack_a->size > NBATCHES ? stack_a->size / NBATCHES : 1;
 	i = 0;
-	while (i++ < NBATCHES - 1)
+	while (errno == 0 && i++ < NBATCHES - 1)
 	{
 		j = 0;
-		while (j++ < batchsize)
-			push_once(stackA, stackB, batchsize * i);
+		while (errno == 0 && j++ < batchsize)
+			push_once(stack_a, stack_b, batchsize * i);
 	}
-	while (stackA->size > 0)
-		push_once(stackA, stackB, INT_MAX);
-	while (stackB->start->value != stackB->size)
-		perform_operation(stackA, stackB, "rrb");
-	while (stackB->start)
-		perform_operation(stackA, stackB, "pa");
+	while (errno == 0 && stack_a->size > 0)
+		push_once(stack_a, stack_b, INT_MAX);
+	while (errno == 0 && stack_b->start->value != stack_b->size)
+		perform_operation(stack_a, stack_b, "rrb");
+	while (errno == 0 && stack_b->start)
+		perform_operation(stack_a, stack_b, "pa");
 }

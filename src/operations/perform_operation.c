@@ -6,13 +6,11 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 02:25:40 by unite             #+#    #+#             */
-/*   Updated: 2020/05/15 02:40:53 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/17 05:00:14 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "operations_private.h"
-#include "libftprintfgnl.h"
-#include <errno.h>
+#include "push_swap.h"
 
 static int			g_verbose;
 
@@ -35,7 +33,8 @@ void				set_verbose(int code)
 	g_verbose = code;
 }
 
-int					perform_operation(t_stack *sa, t_stack *sb, char *oper)
+void				perform_operation(t_stack *stack_a, t_stack *stack_b,
+									char *oper)
 {
 	int	i;
 
@@ -46,9 +45,10 @@ int					perform_operation(t_stack *sa, t_stack *sb, char *oper)
 		{
 			if (g_verbose)
 				ft_putendl(oper);
-			return (g_dispatch_table[i].fun(sa, sb));
+			g_dispatch_table[i].fun(stack_a, stack_b);
+			return ;
 		}
 		i++;
 	}
-	return ((errno = EINVAL));
+	errno = EINVAL;
 }
