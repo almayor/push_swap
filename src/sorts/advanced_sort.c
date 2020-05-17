@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 00:32:01 by unite             #+#    #+#             */
-/*   Updated: 2020/05/17 22:23:08 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/18 00:43:27 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,27 @@ static void	push_once(t_stack *stack_a, t_stack *stack_b, int batch_ceil)
 	perform_operation(stack_a, stack_b, "pb");
 }
 
+int			get_nbatches(int nvalues)
+{
+	if (nvalues <= 100)
+		return (5);
+	else
+		return (5 * (1.25 - nvalues / 400.0) + 13 * (nvalues / 400.0 - 0.25));
+}
+
 void		advanced_sort(t_stack *stack_a, t_stack *stack_b)
 {
+	int		nbatches;
 	int		batchsize;
 	int 	i;
 	int		j;
 
 	if (issorted_stack(stack_a))
 		return ;
-	batchsize = stack_a->size > NBATCHES ? stack_a->size / NBATCHES : 1;
+	nbatches = get_nbatches(stack_a->size);
+	batchsize = stack_a->size > nbatches ? stack_a->size / nbatches : 1;
 	i = 0;
-	while (errno == 0 && i++ < NBATCHES - 1 && stack_a->size > 0)
+	while (errno == 0 && i++ < nbatches - 1 && stack_a->size > 0)
 	{
 		j = 0;
 		while (errno == 0 && j++ < batchsize)

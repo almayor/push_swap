@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/17 16:24:28 by unite             #+#    #+#             */
-/*   Updated: 2020/05/17 19:04:28 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/18 00:43:53 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
-	ft_printf("NBATCHES = %d\n", NBATCHES);
 	set_verbose(1);
 	new_stack(&sa);
 	new_stack(&sb);
