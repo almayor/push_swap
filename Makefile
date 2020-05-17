@@ -6,7 +6,7 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/05/18 01:11:31 by unite            ###   ########.fr        #
+#    Updated: 2020/05/18 01:25:02 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -159,6 +159,7 @@ fclean : clean
 
 clean :
 	$(RM) -rf $(PATHO)
+	$(RM) -rf $(TEST_PATHO)
 	$(MAKE) -C $(PATHL) fclean
 
 re : fclean all
