@@ -263,23 +263,6 @@ MU_TEST(test_get) {
 	free_stack(&st);
 }
 
-MU_TEST(test_reverse_get) {
-	t_stack st;
-
-	new_stack(&st);
-	append_stack(&st, -1);
-	append_stack(&st, 0);
-	append_stack(&st, 1);
-	append_stack(&st, 2);
-	append_stack(&st, 3);
-	mu_check(reverse_get_stack(&st, 0) == 3);
-	mu_check(reverse_get_stack(&st, 1) == 2);
-	mu_check(reverse_get_stack(&st, 2) == 1);
-	mu_check(reverse_get_stack(&st, 3) == 0);
-	mu_check(reverse_get_stack(&st, 4) == -1);
-	free_stack(&st);
-}
-
 MU_TEST(test_min) {
 	t_stack st;
 
@@ -392,7 +375,7 @@ MU_TEST(test_search) {
 	append_stack(&st, 1);
 	append_stack(&st, 2);
 	append_stack(&st, 3);
-	mu_check(search_stack(&st, 1, 0) == 2);
+	mu_check(search_stack(&st, 1, 0, 0) == 2);
 	free_stack(&st);
 
 	new_stack(&st);
@@ -400,7 +383,7 @@ MU_TEST(test_search) {
 	append_stack(&st, 0);
 	append_stack(&st, -1);
 	append_stack(&st, 3);
-	mu_check(search_stack(&st, 2, 1) == 3);
+	mu_check(search_stack(&st, 2, 1, 0) == 3);
 	free_stack(&st);
 
 	new_stack(&st);
@@ -408,7 +391,7 @@ MU_TEST(test_search) {
 	append_stack(&st, 0);
 	append_stack(&st, -1);
 	append_stack(&st, 3);
-	mu_check(search_stack(&st, 4, 0) == -1);
+	mu_check(search_stack(&st, 4, 0, 0) == -1);
 	free_stack(&st);
 
 	new_stack(&st);
@@ -416,7 +399,7 @@ MU_TEST(test_search) {
 	append_stack(&st, -1);
 	append_stack(&st, 0);
 	append_stack(&st, 3);
-	mu_check(search_stack(&st, 0, -1) == 1);
+	mu_check(search_stack(&st, 0, -1, 0) == 1);
 	free_stack(&st);
 
 	new_stack(&st);
@@ -424,12 +407,8 @@ MU_TEST(test_search) {
 	append_stack(&st, -1);
 	append_stack(&st, 0);
 	append_stack(&st, 3);
-	mu_check(search_stack(&st, 100, -1) == 0);
+	mu_check(search_stack(&st, 100, -1, 0) == 0);
 	free_stack(&st);
-}
-
-MU_TEST(test_reverse_search) {
-	t_stack st;
 
 	new_stack(&st);
 	append_stack(&st, -1);
@@ -437,7 +416,7 @@ MU_TEST(test_reverse_search) {
 	append_stack(&st, 1);
 	append_stack(&st, 2);
 	append_stack(&st, 3);
-	mu_check(reverse_search_stack(&st, 1, 0) == 2);
+	mu_check(search_stack(&st, 1, 0, 1) == 2);
 	free_stack(&st);
 
 	new_stack(&st);
@@ -445,7 +424,7 @@ MU_TEST(test_reverse_search) {
 	append_stack(&st, 0);
 	append_stack(&st, -1);
 	append_stack(&st, 3);
-	mu_check(reverse_search_stack(&st, 2, 1) == 0);
+	mu_check(search_stack(&st, 2, 1, 1) == 3);
 	free_stack(&st);
 
 	new_stack(&st);
@@ -453,7 +432,7 @@ MU_TEST(test_reverse_search) {
 	append_stack(&st, 0);
 	append_stack(&st, -1);
 	append_stack(&st, 3);
-	mu_check(reverse_search_stack(&st, 4, 0) == -1);
+	mu_check(search_stack(&st, 4, 0, 1) == -1);
 	free_stack(&st);
 
 	new_stack(&st);
@@ -461,7 +440,7 @@ MU_TEST(test_reverse_search) {
 	append_stack(&st, -1);
 	append_stack(&st, 0);
 	append_stack(&st, 3);
-	mu_check(reverse_search_stack(&st, 0, -1) == 1);
+	mu_check(search_stack(&st, 0, -1, 1) == 2);
 	free_stack(&st);
 
 	new_stack(&st);
@@ -469,7 +448,7 @@ MU_TEST(test_reverse_search) {
 	append_stack(&st, -1);
 	append_stack(&st, 0);
 	append_stack(&st, 3);
-	mu_check(reverse_search_stack(&st, 100, -1) == 0);
+	mu_check(search_stack(&st, 100, -1, 1) == 3);
 	free_stack(&st);
 }
 
@@ -485,12 +464,10 @@ int stack_suite(void) {
 	MU_RUN_TEST(test_issorted);
 	MU_RUN_TEST(test_isset);
 	MU_RUN_TEST(test_get);
-	MU_RUN_TEST(test_reverse_get);
 	MU_RUN_TEST(test_min);
 	MU_RUN_TEST(test_max);
 	MU_RUN_TEST(test_avg);
 	MU_RUN_TEST(test_search);
-	MU_RUN_TEST(test_reverse_search);
 	MU_REPORT();
 	return (MU_EXIT_CODE);
 }
