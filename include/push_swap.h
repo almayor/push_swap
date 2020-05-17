@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/15 16:04:01 by unite             #+#    #+#             */
-/*   Updated: 2020/05/17 05:36:57 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/17 22:23:23 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <errno.h>
 # include <limits.h>
 
-# define NBATCHES	20
+# define NBATCHES	19
 
 typedef struct	s_operation
 {

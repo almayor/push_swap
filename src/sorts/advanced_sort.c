@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 00:32:01 by unite             #+#    #+#             */
-/*   Updated: 2020/05/17 05:08:20 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/17 22:23:08 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void		advanced_sort(t_stack *stack_a, t_stack *stack_b)
 		return ;
 	batchsize = stack_a->size > NBATCHES ? stack_a->size / NBATCHES : 1;
 	i = 0;
-	while (errno == 0 && i++ < NBATCHES - 1)
+	while (errno == 0 && i++ < NBATCHES - 1 && stack_a->size > 0)
 	{
 		j = 0;
 		while (errno == 0 && j++ < batchsize)
