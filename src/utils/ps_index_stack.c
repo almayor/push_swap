@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 22:42:53 by unite             #+#    #+#             */
-/*   Updated: 2020/05/15 19:40:26 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/18 03:13:58 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	switch_stacks(t_stack *stack1, t_stack *stack2)
 
 static int	get_index(t_stack *stack, int val)
 {
-	t_link *li;
+	t_link	*li;
 	int		index;
 
 	li = stack->start;

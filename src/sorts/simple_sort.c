@@ -6,15 +6,14 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 13:07:16 by unite             #+#    #+#             */
-/*   Updated: 2020/05/18 00:55:21 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/18 03:17:32 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void     sort_stack_a(t_stack *stack_a, t_stack *stack_b)
+static void		sort_stack_a(t_stack *stack_a, t_stack *stack_b)
 {
-
 	int max;
 
 	max = max_stack(stack_a);
@@ -26,7 +25,7 @@ static void     sort_stack_a(t_stack *stack_a, t_stack *stack_b)
 		perform_operation(stack_a, stack_b, "sa");
 }
 
-static void     sort_stack_b(t_stack *stack_a, t_stack *stack_b)
+static void		sort_stack_b(t_stack *stack_a, t_stack *stack_b)
 {
 	int min;
 
@@ -39,7 +38,7 @@ static void     sort_stack_b(t_stack *stack_a, t_stack *stack_b)
 		perform_operation(stack_a, stack_b, "sb");
 }
 
-static void      split_stack_a(t_stack *stack_a, t_stack *stack_b, int minbound)
+static void		split_stack_a(t_stack *stack_a, t_stack *stack_b, int minbound)
 {
 	int	i;
 	int	n;
@@ -56,13 +55,13 @@ static void      split_stack_a(t_stack *stack_a, t_stack *stack_b, int minbound)
 	}
 }
 
-static void      merge_stacks(t_stack *stack_a, t_stack *stack_b)
+static void		merge_stacks(t_stack *stack_a, t_stack *stack_b)
 {
 	while (errno == 0 && stack_b->start)
 		perform_operation(stack_a, stack_b, "pa");
 }
 
-void         	simple_sort(t_stack *stack_a, t_stack *stack_b)
+void			simple_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	if (stack_a->size < 2)
 		return ;

@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 00:32:01 by unite             #+#    #+#             */
-/*   Updated: 2020/05/18 00:43:27 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/18 03:14:16 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void		advanced_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	int		nbatches;
 	int		batchsize;
-	int 	i;
+	int		i;
 	int		j;
 
 	if (issorted_stack(stack_a))
