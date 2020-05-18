@@ -5,10 +5,10 @@
 ## Overview
 
 
-* [Official instructions](docs/subjects/push_swap.en.pdf)
+* [Official instructions](docs/push_swap.en.pdf)
 * The goal of this project is to practice sorting algorithms and design a new one, optimized for a given data structure.
 * As per instructions, the project is realised using a C library compiled during [previous projects](http://github.com/almayor/libftprintfgnl).
-* The project (with the exception of tests) is consistent with the [Norme](docs/subjects/norme.en.pdf), the code standard accepted at *School 42*. In particular, this means that
+* The project (with the exception of tests) is consistent with the [Norme](docs/norme.en.pdf), the code standard accepted at *School 42*. In particular, this means that
 	* no comments inline or inside functions
 	* `for` loops and `switch` statements are forbidden
 	* each function must be maximum 25 lines

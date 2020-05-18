@@ -5,3 +5,5 @@ obj
 CMakeList.txt
 *.pickle
 cmake-build-debug
+.idea
+
