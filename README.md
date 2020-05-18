@@ -71,9 +71,9 @@ For efficiency, two different algorithms are utilized
 
 1. The idea is based on a [Medium article](https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a).
 2. I then empirically optimized the number of batches as a function of the number of values. For example, here is the number of operations for 100 and 500 values for different number of batches (the average and standard deviation are based on 100 datapoints). As we can see, performance is best with 5 and 13 batches, respectively.
-![](assets/nbatches_noperations_plot.png)
+![](docs/nbatches_noperations_plot.png)
 3. Following the same procedure, I computed the optimum batch number for more values
-![](assets/nbatches_nvalues_plot.png)
+![](docs/nbatches_nvalues_plot.png)
 
 Thus, the algorithm works best with five batches for sorting lists with up to 100 values. From then on, the optimal number of batches increases roughly linearly between 100 and 500 values and can probably be extraplated in this way to higher values.
 
