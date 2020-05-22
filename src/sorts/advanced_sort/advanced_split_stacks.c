@@ -6,57 +6,69 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 00:32:01 by unite             #+#    #+#             */
-/*   Updated: 2020/05/22 18:46:08 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/23 02:05:48 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	get_nconflicts(const t_stack *st, int i, const int *is_pushed)
+static int	get_nconflicts(const t_stack *st, int i, const int *split_schema)
 {
-	int	val1;
-	int	val2;
-	int	j;
-	int	jumped2top;
-	int	nconfl;
+	t_link	*li;
+	int		val;
+	int		j;
+	int 	k;
+	int		nconfl;
 
-	val1 = get_stack(st, i);
-	jumped2top = 0;
-	j = 1;
+	li = st->start;
+	val = get_stack(st, i);
+	j = 0;
+	k = search_stack(st, 1);
 	nconfl = 0;
-	while (j < st->size)
+	while (li)
 	{
-		val2 = get_stack(st, (i + j) % st->size);
-		if (!is_pushed[val2])
+		if (split_schema[li->value] == 0)
 		{
-			if (val2 == 1)
-				jumped2top = 1;
-			else if (!jumped2top && val2 < val1)
-				nconfl++;
-			else if (jumped2top && val2 > val1)
+			if ((j < k && i < k && j < i && li->value > val) ||
+				(j > k && i > k && j > i && li->value < val) ||
+				(j < k && i > k && li->value < val) ||
+				(j > k && i < k && li->value > val))
 				nconfl++;
 		}
+		li = li->next;
 		j++;
 	}
 	return (nconfl);
 }
 
-static int	has_conflicts(t_stack *st, int *is_pushed)
+static int	has_conflicts(t_stack *st, int *split_schema)
 {
-	t_link	*li;
+	t_link	*li1;
+	t_link	*li2;
 
-	li = st->start;
-	while (li->next)
+	li1 = st->start;
+	while (li1 && split_schema[li1->value])
+		li1 = li1->next;
+	while (1)
 	{
-		if (!is_pushed[li->value] && !is_pushed[li->next->value] &&
-		li->next->value != 1 && li->value && li->next->value)
+		li2 = li1->next;
+		while (li2 && split_schema[li2->value])
+			li2 = li2->next;
+		if (!li2)
+			break ;
+		if (li2->value != 1 && li1->value > li2->value)
 			return (1);
-		li = li->next;
+		li1 = li2;
 	}
+	li2 = st->start;
+	while (li2 && split_schema[li2->value])
+		li2 = li2->next;
+	if (li2->value != 1 && li1->value > li2->value)
+		return (1);
 	return (0);
 }
 
-static int	get_next_pushed(const t_stack *st, const int *is_pushed)
+static int	get_next_pushed(const t_stack *st, const int *split_schema)
 {
 	int	i;
 	int	push_val;
@@ -69,9 +81,9 @@ static int	get_next_pushed(const t_stack *st, const int *is_pushed)
 	while (i < st->size)
 	{
 		val = get_stack(st, i);
-		if (!is_pushed[val])
+		if (!split_schema[val])
 		{
-			val_nconfl = get_nconflicts(st, i, is_pushed);
+			val_nconfl = get_nconflicts(st, i, split_schema);
 			if (val_nconfl > push_val_nconfl)
 			{
 				push_val_nconfl = val_nconfl;
@@ -85,27 +97,27 @@ static int	get_next_pushed(const t_stack *st, const int *is_pushed)
 
 void		advanced_split_stacks(t_stack *st_a, t_stack *st_b)
 {
-	int	*is_pushed;
+	int	*split_schema;
 	int	push_val;
 	int	i;
 
-	if (!(is_pushed = ft_calloc(st_a->size + 1, sizeof(int))))
+	if (!(split_schema = ft_calloc(st_a->size + 1, sizeof(int))))
 	{
 		errno = ENOMEM;
 		return ;
 	}
-	while (has_conflicts(st_a, is_pushed))
+	while (has_conflicts(st_a, split_schema))
 	{
-		push_val = get_next_pushed(st_a, is_pushed);
-		is_pushed[push_val] = 1;
+		push_val = get_next_pushed(st_a, split_schema);
+		split_schema[push_val] = 1;
 	}
 	i = st_a->size;
 	while (errno == 0 && i-- > 0)
 	{
-		if (is_pushed[st_a->start->value])
+		if (split_schema[st_a->start->value])
 			perform_operation(st_a, st_b, "pb");
 		else
 			perform_operation(st_a, st_b, "ra");
 	}
-	free(is_pushed);
+	free(split_schema);
 }
