@@ -4,7 +4,7 @@ import random
 import sys
 
 if (len(sys.argv) != 2):
-	sys.exit("Usage: integer-set-generator <size of set>")
+	sys.exit("Usage: random-list-generator <size of list>")
 
 try:
 	data = range(1, int(sys.argv[1]) + 1, 1)

@@ -12,8 +12,8 @@
 
 #include "push_swap.h"
 
-void	perform_rra(t_stack *stack_a, t_stack *stack_b)
+void	perform_rra(t_stack *st_a, t_stack *st_b)
 {
-	(void)stack_b;
-	reverse_rotate_stack(stack_a);
+	(void)st_b;
+	reverse_rotate_stack(st_a);
 }

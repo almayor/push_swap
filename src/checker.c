@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static int	process_operations(t_stack *stack_a, t_stack *stack_b)
+static int	process_operations(t_stack *st_a, t_stack *st_b)
 {
 	char	*oper;
 
@@ -22,7 +22,7 @@ static int	process_operations(t_stack *stack_a, t_stack *stack_b)
 			return (errno);
 		if (ft_strequ(oper, ""))
 			return (0);
-		perform_operation(stack_a, stack_b, oper);
+		perform_operation(st_a, st_b, oper);
 		free(oper);
 	}
 	return (0);
@@ -30,24 +30,24 @@ static int	process_operations(t_stack *stack_a, t_stack *stack_b)
 
 int			main(int argc, char **argv)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
+	t_stack	st_a;
+	t_stack	st_b;
 
 	if (argc < 2)
 		return (0);
-	new_stack(&stack_a);
-	new_stack(&stack_b);
-	if (ps_tab2stack(++argv, &stack_a) ||
-		process_operations(&stack_a, &stack_b))
+	new_stack(&st_a);
+	new_stack(&st_b);
+	if (ps_tab2stack(++argv, &st_a) ||
+		process_operations(&st_a, &st_b))
 	{
-		free_stack(&stack_a);
-		free_stack(&stack_b);
+		free_stack(&st_a);
+		free_stack(&st_b);
 		ps_exit(errno);
 	}
-	if (issorted_stack(&stack_a) && stack_b.size == 0)
+	if (isordered_stack(&st_a) && st_b.size == 0)
 		ft_putendl("OK");
 	else
 		ft_putendl("KO");
-	free_stack(&stack_a);
-	free_stack(&stack_b);
+	free_stack(&st_a);
+	free_stack(&st_b);
 }

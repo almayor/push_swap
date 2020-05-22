@@ -12,8 +12,8 @@
 
 #include "push_swap.h"
 
-void	perform_rrr(t_stack *stack_a, t_stack *stack_b)
+void	perform_rrr(t_stack *st_a, t_stack *st_b)
 {
-	perform_rra(stack_a, stack_b);
-	perform_rrb(stack_a, stack_b);
+	perform_rra(st_a, st_b);
+	perform_rrb(st_a, st_b);
 }

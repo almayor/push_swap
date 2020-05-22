@@ -33,7 +33,7 @@ void				set_verbose(int code)
 	g_verbose = code;
 }
 
-void				perform_operation(t_stack *stack_a, t_stack *stack_b,
+void				perform_operation(t_stack *st_a, t_stack *st_b,
 									char *oper)
 {
 	int	i;
@@ -45,7 +45,7 @@ void				perform_operation(t_stack *stack_a, t_stack *stack_b,
 		{
 			if (g_verbose)
 				ft_putendl(oper);
-			g_dispatch_table[i].fun(stack_a, stack_b);
+			g_dispatch_table[i].fun(st_a, st_b);
 			return ;
 		}
 		i++;

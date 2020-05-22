@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   perform_rr.c                                       :+:      :+:    :+:   */
+/*   advanced_sort.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/22 23:15:52 by unite             #+#    #+#             */
-/*   Updated: 2020/05/17 05:00:23 by unite            ###   ########.fr       */
+/*   Created: 2020/05/22 04:31:40 by unite             #+#    #+#             */
+/*   Updated: 2020/05/22 05:22:44 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	perform_rr(t_stack *st_a, t_stack *st_b)
+void	advanced_sort(t_stack *st_a, t_stack *st_b)
 {
-	perform_ra(st_a, st_b);
-	perform_rb(st_a, st_b);
+	advanced_split_stacks(st_a, st_b);
+	advanced_merge_stacks(st_a, st_b);
 }

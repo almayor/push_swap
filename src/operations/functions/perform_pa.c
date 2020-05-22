@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	perform_pa(t_stack *stack_a, t_stack *stack_b)
+void	perform_pa(t_stack *st_a, t_stack *st_b)
 {
-	push_stack(stack_a, pull_stack(stack_b));
+	push_stack(st_a, pull_stack(st_b));
 }

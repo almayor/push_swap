@@ -12,8 +12,8 @@
 
 #include "push_swap.h"
 
-void	perform_ss(t_stack *stack_a, t_stack *stack_b)
+void	perform_ss(t_stack *st_a, t_stack *st_b)
 {
-	perform_sa(stack_a, stack_b);
-	perform_sb(stack_b, stack_b);
+	perform_sa(st_a, st_b);
+	perform_sb(st_b, st_b);
 }
