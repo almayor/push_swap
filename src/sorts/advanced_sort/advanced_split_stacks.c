@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 00:32:01 by unite             #+#    #+#             */
-/*   Updated: 2020/05/22 05:25:10 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/22 18:46:08 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,15 @@ static int	get_nconflicts(const t_stack *st, int i, const int *is_pushed)
 
 static int	has_conflicts(t_stack *st, int *is_pushed)
 {
-	int i = 0;
+	t_link	*li;
 
-	while (i < st->size)
+	li = st->start;
+	while (li->next)
 	{
-		if (!is_pushed[get_stack(st, i)] && get_nconflicts(st, i, is_pushed))
-			return (1)
-		i++;
+		if (!is_pushed[li->value] && !is_pushed[li->next->value] &&
+		li->next->value != 1 && li->value && li->next->value)
+			return (1);
+		li = li->next;
 	}
 	return (0);
 }
@@ -69,7 +71,7 @@ static int	get_next_pushed(const t_stack *st, const int *is_pushed)
 		val = get_stack(st, i);
 		if (!is_pushed[val])
 		{
-			val_nconfl = count_conflicts(st, i, is_pushed);
+			val_nconfl = get_nconflicts(st, i, is_pushed);
 			if (val_nconfl > push_val_nconfl)
 			{
 				push_val_nconfl = val_nconfl;
@@ -81,7 +83,7 @@ static int	get_next_pushed(const t_stack *st, const int *is_pushed)
 	return (push_val);
 }
 
-void		advanced_split_stack(t_stack *st_a, t_stack *st_b)
+void		advanced_split_stacks(t_stack *st_a, t_stack *st_b)
 {
 	int	*is_pushed;
 	int	push_val;
@@ -94,13 +96,13 @@ void		advanced_split_stack(t_stack *st_a, t_stack *st_b)
 	}
 	while (has_conflicts(st_a, is_pushed))
 	{
-		push_val = next_to_remove(st_a, is_pushed);
+		push_val = get_next_pushed(st_a, is_pushed);
 		is_pushed[push_val] = 1;
 	}
 	i = st_a->size;
 	while (errno == 0 && i-- > 0)
 	{
-		if (is_removed[st_a->start->value])
+		if (is_pushed[st_a->start->value])
 			perform_operation(st_a, st_b, "pb");
 		else
 			perform_operation(st_a, st_b, "ra");

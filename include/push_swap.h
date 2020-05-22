@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/15 16:04:01 by unite             #+#    #+#             */
-/*   Updated: 2020/05/22 05:38:19 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/22 18:42:44 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct	s_operation
 
 void			simple_sort(t_stack *sa, t_stack *sb);
 void			advanced_sort(t_stack *sa, t_stack *sb);
+void			advanced_split_stacks(t_stack *st_a, t_stack *st_b);
 void			advanced_merge_stacks(t_stack *st_a, t_stack *st_b);
 
 void			advanced_push_ra_rb(t_stack *st_a, t_stack *st_b,

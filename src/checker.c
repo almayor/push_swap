@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 22:48:04 by unite             #+#    #+#             */
-/*   Updated: 2020/05/18 03:16:55 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/22 18:39:12 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int			main(int argc, char **argv)
 		free_stack(&st_b);
 		ps_exit(errno);
 	}
-	if (isordered_stack(&st_a) && st_b.size == 0)
+	if (issorted_stack(&st_a) && st_b.size == 0)
 		ft_putendl("OK");
 	else
 		ft_putendl("KO");

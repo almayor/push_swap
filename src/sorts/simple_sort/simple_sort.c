@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 13:07:16 by unite             #+#    #+#             */
-/*   Updated: 2020/05/18 03:17:32 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/22 18:44:09 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void			simple_sort(t_stack *st_a, t_stack *st_b)
 		return ;
 	if (st_a->size <= 3)
 		sort_st_a(st_a, st_b);
-	else if (!isordered_stack(st_a))
+	else if (!issorted_stack(st_a))
 	{
 		split_st_a(st_a, st_b, avg_stack(st_a));
 		sort_st_a(st_a, st_b);

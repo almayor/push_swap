@@ -6,13 +6,13 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 04:34:25 by unite             #+#    #+#             */
-/*   Updated: 2020/05/22 05:41:10 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/22 18:41:48 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	get_nra(t_stack *st_a, int val)
+static int	get_nra(const t_stack *st_a, int val)
 {
 	int		nra;
 	t_link	*li;
@@ -25,7 +25,7 @@ static int	get_nra(t_stack *st_a, int val)
 	li = st_a->start->next;
 	while (li)
 	{
-		if (val < li->value && val > li->previous->val)
+		if (val < li->value && val > li->previous->value)
 			return (nra);
 		nra++;
 		li = li->next;
@@ -46,7 +46,7 @@ static int	get_noper(int nra, int nrra, int nrb, int nrrb)
 		return (nrb + nrra);
 }
 
-static int	get_next_pushed(t_stack *st_a, t_stack *st_b)
+static int	get_next_pushed(const t_stack *st_a, const t_stack *st_b)
 {
 	int	nrb;
 	int	nra;
@@ -57,15 +57,15 @@ static int	get_next_pushed(t_stack *st_a, t_stack *st_b)
 	min_noper = INT_MAX;
 	while (nrb < st_b->size)
 	{
-		nra = get_nra(st_a, get_stack(st_a, nrb));
+		nra = get_nra(st_a, get_stack(st_b, nrb));
 		if (min_noper > get_noper(nra, st_a->size - nra, nrb, st_b->size - nrb))
 		{
-			min_oper = get_noper(nra, st_a->size - nra, nrb, st_b->size - nrb);
-			min_oper_val = get_stack(st_a, nrb);
+			min_noper = get_noper(nra, st_a->size - nra, nrb, st_b->size - nrb);
+			min_noper_val = get_stack(st_b, nrb);
 		}
 		nrb++;
 	}
-	return (min_oper_val);
+	return (min_noper_val);
 }
 
 static void	push_once(t_stack *st_a, t_stack *st_b, int push_val)

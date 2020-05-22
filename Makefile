@@ -6,7 +6,7 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/05/22 05:46:51 by unite            ###   ########.fr        #
+#    Updated: 2020/05/22 18:40:00 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,44 +17,44 @@ NAME_PS = push_swap
 SRC_PS_NAME = push_swap.c
 
 SRC_NAME = \
-src/operations/functions/perform_pa.c \
-src/operations/functions/perform_pb.c \
-src/operations/functions/perform_ra.c \
-src/operations/functions/perform_rb.c \
-src/operations/functions/perform_rr.c \
-src/operations/functions/perform_rra.c \
-src/operations/functions/perform_rrb.c \
-src/operations/functions/perform_rrr.c \
-src/operations/functions/perform_sa.c \
-src/operations/functions/perform_sb.c \
-src/operations/functions/perform_ss.c \
-src/operations/perform_operation.c \
-src/sorts/advanced_sort/advanced_merge_stacks.c \
-src/sorts/advanced_sort/advanced_push.c \
-src/sorts/advanced_sort/advanced_sort.c \
-src/sorts/advanced_sort/advanced_split_stacks.c \
-src/sorts/simple_sort/simple_sort.c \
-src/stack/append_stack.c \
-src/stack/avg_stack.c \
-src/stack/free_stack.c \
-src/stack/get_stack.c \
-src/stack/isset_stack.c \
-src/stack/issorted_stack.c \
-src/stack/max_stack.c \
-src/stack/min_stack.c \
-src/stack/new_stack.c \
-src/stack/print_stack.c \
-src/stack/pull_stack.c \
-src/stack/push_stack.c \
-src/stack/reverse_rotate_stack.c \
-src/stack/rotate_stack.c \
-src/stack/search_stack.c \
-src/stack/swap_stack.c \
-src/utils/ps_atoi.c \
-src/utils/ps_exit.c \
-src/utils/ps_index_stack.c \
-src/utils/ps_isnumeric_str.c \
-src/utils/ps_tab2stack.c \
+operations/functions/perform_pa.c \
+operations/functions/perform_pb.c \
+operations/functions/perform_ra.c \
+operations/functions/perform_rb.c \
+operations/functions/perform_rr.c \
+operations/functions/perform_rra.c \
+operations/functions/perform_rrb.c \
+operations/functions/perform_rrr.c \
+operations/functions/perform_sa.c \
+operations/functions/perform_sb.c \
+operations/functions/perform_ss.c \
+operations/perform_operation.c \
+sorts/advanced_sort/advanced_merge_stacks.c \
+sorts/advanced_sort/advanced_push.c \
+sorts/advanced_sort/advanced_sort.c \
+sorts/advanced_sort/advanced_split_stacks.c \
+sorts/simple_sort/simple_sort.c \
+stack/append_stack.c \
+stack/avg_stack.c \
+stack/free_stack.c \
+stack/get_stack.c \
+stack/isset_stack.c \
+stack/issorted_stack.c \
+stack/max_stack.c \
+stack/min_stack.c \
+stack/new_stack.c \
+stack/print_stack.c \
+stack/pull_stack.c \
+stack/push_stack.c \
+stack/reverse_rotate_stack.c \
+stack/rotate_stack.c \
+stack/search_stack.c \
+stack/swap_stack.c \
+utils/ps_atoi.c \
+utils/ps_exit.c \
+utils/ps_index_stack.c \
+utils/ps_isnumeric_str.c \
+utils/ps_tab2stack.c \
 
 TEST_NAME = unit-tests
 
