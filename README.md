@@ -2,7 +2,7 @@
 
 *This project is part of the official curriculum at [School 42](https://en.wikipedia.org/wiki/42_(school)).*
 
-## Overview
+# Overview
 
 
 * [Official instructions](docs/push_swap.en.pdf)
@@ -13,7 +13,7 @@
 	* `for` loops and `switch` statements are forbidden
 	* each function must be maximum 25 lines
 
-## Problem
+# Problem
 
 The goal is to design an algorithm that would sort a list of integers without any duplicated. The algorithm should operate on two stacks, a and b, using the **shortest** sequence of the following operations:
 
@@ -55,21 +55,21 @@ The project is then checked as follows
 OK
 ```
 
-## Algorithm
+# Algorithm
 
 For efficiency, two different algorithms are utilized
 
 * simple: for up to six values
 * advanced: for more than six values
 
-### Simple algorithm
+## Simple algorithm
 
 1. Manually code how to sort a stack of up to three values. With only six possible permutations this is easy to do.
 2. If there are over three values, push all values less than the median onto stack b, sort two stacks independently and then merge. 
 
-### Advanced algorithm
+## Advanced algorithm
 
-#### STEP 1: SPLIT INTO TWO STACKS
+### STEP 1: SPLIT INTO TWO STACKS
 
 At each iteration, calculate the number of conflicts for each number left in stack a. A conflict is defined as a pair of number in the stack that are in the wrong order (i.e. the smaller number comes last). Mark the number with the most conflicts to be pushed to stack b later on and ignore it during future iterations. 
 
@@ -107,7 +107,7 @@ Hence, we mark 6 to be pushed.
 
 Once there are no conflicts left in stack a, push all the numbers destined to be pushed to stack b (so far we haven't pushed them, just kept in memory). After we're done, stack a should already be "circularly" sorted, albeit missing some numbers which are not in stack b. Moreover, we have reached this step by pushing the *fewest* numbers to stack b.
 
-#### STEP 2: MERGE STACKS
+### STEP 2: MERGE STACKS
 
 At each iteration, calculate the number of operations necessary to push a number from stack b to stack a, such that it ends up in the right place on stack a (without introducing any conflicts). Take into account that `ra` and `rb` can be accomplished simultaneously with `rr` etc. Do this for all numbers in stack b, select the one with the least number of operations and push back to stack a.
 
@@ -133,7 +133,7 @@ STACK B: 6
 we only have 6 left in stack b, so we push it with `2 x rra` and `1 x pa`.
 
 
-#### STEP 3: ROTATE STACK A
+### STEP 3: ROTATE STACK A
 
 At this point, stack b is empty and stack a is "circulary" sorted (i.e. it has no conflicts but the smallest number may not be on top).
 
@@ -144,7 +144,7 @@ For example, our stack a after steam 2 is
 ```
 It would take `1 x ra` and `5 x rra` to get 1 to the top. Therefore, we choose perform `1 x ra` and we're done.
 
-## Acknowledgements
+# Acknowledgements
 
 My thanks go to `@jmalik` at the [Moscow branch](https://21-school.ru
 ) of School 42, discussions with whom have greatly improved my understanding of the problem and contributed to [STEP 2](#####-step-3:-rotate-stack-a) of my algorithm. I am also grateful to the entire team behind School 42, as well as to my other fellow students for help and support.
