@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 00:32:01 by unite             #+#    #+#             */
-/*   Updated: 2020/05/23 02:05:48 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/23 18:25:16 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ static int	get_next_pushed(const t_stack *st, const int *split_schema)
 	int	val_nconfl;
 
 	push_val_nconfl = 0;
+	push_val = 0;
 	i = 0;
 	while (i < st->size)
 	{
