@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 00:32:01 by unite             #+#    #+#             */
-/*   Updated: 2020/05/23 18:25:16 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/23 18:46:42 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	get_nconflicts(const t_stack *st, int i, const int *split_schema)
 	t_link	*li;
 	int		val;
 	int		j;
-	int 	k;
+	int		k;
 	int		nconfl;
 
 	li = st->start;
