@@ -140,7 +140,7 @@ At this point, stack b is empty and stack a is "circulary" sorted (i.e. it has n
 For example, our stack a after steam 2 is
 
 ```
-6->1->2->3->4->5
+STACK A: 6->1->2->3->4->5
 ```
 It would take `1 x ra` and `5 x rra` to get 1 to the top. Therefore, we choose perform `1 x ra` and we're done.
 
