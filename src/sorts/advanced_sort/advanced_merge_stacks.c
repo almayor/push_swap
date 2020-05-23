@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 04:34:25 by unite             #+#    #+#             */
-/*   Updated: 2020/05/22 18:41:48 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/23 18:23:14 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static int	get_next_pushed(const t_stack *st_a, const t_stack *st_b)
 
 	nrb = 0;
 	min_noper = INT_MAX;
+	min_noper_val = INT_MAX;
 	while (nrb < st_b->size)
 	{
 		nra = get_nra(st_a, get_stack(st_b, nrb));
