@@ -6,7 +6,7 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/05/22 18:40:00 by unite            ###   ########.fr        #
+#    Updated: 2020/05/23 07:13:49 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,11 +67,10 @@ sorts_suite.c
 
 ################################################################################
 
-PATH = .
-PATHS = $(PATH)/src
-PATHO = $(PATH)/obj
-PATHL = $(PATH)/libftprintfgnl
-PATHI = $(PATH)/include $(PATHL)
+PATHS = src
+PATHO = obj
+PATHL = libftprintfgnl
+PATHI = include $(PATHL)
 
 TEST_PATH = test/unit
 TEST_PATHS = $(TEST_PATH)/src
@@ -114,8 +113,8 @@ OBJ_PS = $(patsubst %.c, $(PATHO)/%.o, $(SRC_PS_NAME))
 TEST_SRC = $(patsubst %.c, $(TEST_PATHS)/%.c, $(TEST_SRC_NAME))
 TEST_OBJ = $(patsubst %.c, $(TEST_PATHO)/%.o, $(TEST_SRC_NAME))
 
-BIN_CK = $(PATH)/$(NAME_CK)
-BIN_PS = $(PATH)/$(NAME_PS)
+BIN_CK = $(NAME_CK)
+BIN_PS = $(NAME_PS)
 TEST_BIN = $(TEST_PATH)/$(TEST_NAME)
 
 ################################################################################
