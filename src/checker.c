@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 22:48:04 by unite             #+#    #+#             */
-/*   Updated: 2020/05/22 18:39:12 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/23 22:24:32 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ static int	process_operations(t_stack *st_a, t_stack *st_b)
 
 	while (get_next_line(0, &oper))
 	{
-		if (errno)
-			return (errno);
 		if (ft_strequ(oper, ""))
 			return (0);
 		perform_operation(st_a, st_b, oper);
+		if (errno)
+			return (errno);
 		free(oper);
 	}
 	return (0);
