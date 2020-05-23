@@ -147,7 +147,7 @@ It would take `1 x ra` and `5 x rra` to get 1 to the top. Therefore, we choose p
 # Acknowledgements
 
 My thanks go to `@jmalik` at the [Moscow branch](https://21-school.ru
-) of School 42, discussions with whom have greatly improved my understanding of the problem and contributed to [STEP 2](#####-step-3:-rotate-stack-a) of my algorithm. I am also grateful to the entire team behind School 42, as well as to my other fellow students for help and support.
+) of School 42, discussions with whom have greatly improved my understanding of the problem and contributed to [STEP 2](###-step-2:-merge-stacks) of my algorithm. I am also grateful to the entire team behind School 42, as well as to my other fellow students for help and support.
 
 ---
 If you have any questions, please contact me on Github.
