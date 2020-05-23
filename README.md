@@ -55,6 +55,8 @@ The project is then checked as follows
 OK
 ```
 
+(Note that the above command doesn't work on `zsh`, so if you're using it, run this instead `sh -c 'ARG=$(./random-list-generator <number of values>); ./push_swap $ARG | ./checker $ARG'`.
+
 # Algorithm
 
 For efficiency, two different algorithms are utilized
