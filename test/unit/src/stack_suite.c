@@ -375,7 +375,7 @@ MU_TEST(test_search) {
 	append_stack(&st, 1);
 	append_stack(&st, 2);
 	append_stack(&st, 3);
-	mu_check(search_stack(&st, 1, 0, 0) == 2);
+	mu_check(search_stack(&st, 1) == 2);
 	free_stack(&st);
 
 	new_stack(&st);
@@ -383,7 +383,7 @@ MU_TEST(test_search) {
 	append_stack(&st, 0);
 	append_stack(&st, -1);
 	append_stack(&st, 3);
-	mu_check(search_stack(&st, 2, 1, 0) == 3);
+	mu_check(search_stack(&st, 2) == -1);
 	free_stack(&st);
 
 	new_stack(&st);
@@ -391,7 +391,7 @@ MU_TEST(test_search) {
 	append_stack(&st, 0);
 	append_stack(&st, -1);
 	append_stack(&st, 3);
-	mu_check(search_stack(&st, 4, 0, 0) == -1);
+	mu_check(search_stack(&st, 1) == 0);
 	free_stack(&st);
 
 	new_stack(&st);
@@ -399,56 +399,7 @@ MU_TEST(test_search) {
 	append_stack(&st, -1);
 	append_stack(&st, 0);
 	append_stack(&st, 3);
-	mu_check(search_stack(&st, 0, -1, 0) == 1);
-	free_stack(&st);
-
-	new_stack(&st);
-	append_stack(&st, 1);
-	append_stack(&st, -1);
-	append_stack(&st, 0);
-	append_stack(&st, 3);
-	mu_check(search_stack(&st, 100, -1, 0) == 0);
-	free_stack(&st);
-
-	new_stack(&st);
-	append_stack(&st, -1);
-	append_stack(&st, 0);
-	append_stack(&st, 1);
-	append_stack(&st, 2);
-	append_stack(&st, 3);
-	mu_check(search_stack(&st, 1, 0, 1) == 2);
-	free_stack(&st);
-
-	new_stack(&st);
-	append_stack(&st, 1);
-	append_stack(&st, 0);
-	append_stack(&st, -1);
-	append_stack(&st, 3);
-	mu_check(search_stack(&st, 2, 1, 1) == 3);
-	free_stack(&st);
-
-	new_stack(&st);
-	append_stack(&st, 1);
-	append_stack(&st, 0);
-	append_stack(&st, -1);
-	append_stack(&st, 3);
-	mu_check(search_stack(&st, 4, 0, 1) == -1);
-	free_stack(&st);
-
-	new_stack(&st);
-	append_stack(&st, 1);
-	append_stack(&st, -1);
-	append_stack(&st, 0);
-	append_stack(&st, 3);
-	mu_check(search_stack(&st, 0, -1, 1) == 2);
-	free_stack(&st);
-
-	new_stack(&st);
-	append_stack(&st, 1);
-	append_stack(&st, -1);
-	append_stack(&st, 0);
-	append_stack(&st, 3);
-	mu_check(search_stack(&st, 100, -1, 1) == 3);
+	mu_check(search_stack(&st, 3) == 3);
 	free_stack(&st);
 }
 
