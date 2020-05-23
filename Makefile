@@ -6,7 +6,7 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/05/23 07:13:49 by unite            ###   ########.fr        #
+#    Updated: 2020/05/23 18:41:26 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,12 +86,14 @@ MKDIR = /bin/mkdir
 ################################################################################
 
 COMPILE = $(CC) -c
-LINK = $(CC) -lftprintfgnl -L $(PATHL)
+LINK = $(CC)
 
 CFLAGS += -Wall -Wextra -Werror
 CFLAGS += -O3 -std=gnu11 -ffast-math -march=native
 CFLAGS += -MMD
 CFLAGS += $(foreach path, $(PATHI) $(TEST_PATHI), -I$(path))
+
+LIBS = -lftprintfgnl -L $(PATHL)
 
 ################################################################################
 
@@ -120,13 +122,13 @@ TEST_BIN = $(TEST_PATH)/$(TEST_NAME)
 ################################################################################
 
 $(BIN_CK) : $(OBJ_CK) $(OBJ)
-	$(LINK) $^ -o $@
+	$(LINK) $^ -o $@ $(LIBS)
 
 $(BIN_PS) : $(OBJ_PS) $(OBJ)
-	$(LINK) $^ -o $@
+	$(LINK) $^ -o $@ $(LIBS)
 
 $(TEST_BIN) : $(TEST_OBJ) $(OBJ)
-	$(LINK) $^ -o $@
+	$(LINK) $^ -o $@ $(LIBS)
 
 ################################################################################
 
