@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/17 16:24:28 by unite             #+#    #+#             */
-/*   Updated: 2020/05/18 00:43:53 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/23 19:53:57 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 int	main(int argc, char **argv)
 {
-	t_stack	sa;
-	t_stack	sb;
+	t_stack	st_a;
+	t_stack	st_b;
 
 	if (argc < 2)
 		return (0);
 	set_verbose(1);
-	new_stack(&sa);
-	new_stack(&sb);
-	if (!ps_tab2stack(++argv, &sa) && !ps_index_stack(&sa))
+	new_stack(&st_a);
+	new_stack(&st_b);
+	if (!ps_tab2stack(++argv, &st_a) && !ps_index_stack(&st_a))
 	{
-		if (sa.size <= 6)
-			simple_sort(&sa, &sb);
+		if (st_a.size <= 6)
+			simple_sort(&st_a, &st_b);
 		else
-			advanced_sort(&sa, &sb);
+			advanced_sort(&st_a, &st_b);
 	}
-	free_stack(&sa);
-	free_stack(&sb);
+	free_stack(&st_a);
+	free_stack(&st_b);
 	ps_exit(errno);
 }
