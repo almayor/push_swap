@@ -69,7 +69,7 @@ For efficiency, two different algorithms are utilized
 
 ### Advanced algorithm
 
-####STEP 1: SPLIT INTO TWO STACKS
+#### STEP 1: SPLIT INTO TWO STACKS
 
 At each iteration, calculate the number of conflicts for each number left in stack a. A conflict is defined as a pair of number in the stack that are in the wrong order (i.e. the smaller number comes last). Mark the number with the most conflicts to be pushed to stack b later on and ignore it during future iterations. 
 
@@ -107,7 +107,7 @@ Hence, we mark 6 to be pushed.
 
 Once there are no conflicts left in stack a, push all the numbers destined to be pushed to stack b (so far we haven't pushed them, just kept in memory). After we're done, stack a should already be "circularly" sorted, albeit missing some numbers which are not in stack b. Moreover, we have reached this step by pushing the *fewest* numbers to stack b.
 
-####STEP 2: MERGE STACKS
+#### STEP 2: MERGE STACKS
 
 At each iteration, calculate the number of operations necessary to push a number from stack b to stack a, such that it ends up in the right place on stack a (without introducing any conflicts). Take into account that `ra` and `rb` can be accomplished simultaneously with `rr` etc. Do this for all numbers in stack b, select the one with the least number of operations and push back to stack a.
 
@@ -133,7 +133,7 @@ STACK B: 6
 we only have 6 left in stack b, so we push it with `2 x rra` and `1 x pa`.
 
 
-####STEP 3: ROTATE STACK A
+#### STEP 3: ROTATE STACK A
 
 At this point, stack b is empty and stack a is "circulary" sorted (i.e. it has no conflicts but the smallest number may not be on top).
 
