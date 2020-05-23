@@ -67,26 +67,87 @@ For efficiency, two different algorithms are utilized
 1. Manually code how to sort a stack of up to three values. With only six possible permutations this is easy to do.
 2. If there are over three values, push all values less than the median onto stack b, sort two stacks independently and then merge. 
 
-### Advanced algorithm (aka Batched Insertion Sort)
+### Advanced algorithm
 
-1. The idea is based on a [Medium article](https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a).
-2. I then empirically optimized the number of batches as a function of the number of values. For example, here is the number of operations for 100 and 500 values for different number of batches (the average and standard deviation are based on 100 datapoints). As we can see, performance is best with 5 and 13 batches, respectively.
-![](docs/nbatches_noperations_plot.png)
-3. Following the same procedure, I computed the optimum batch number for more values
-![](docs/nbatches_nvalues_plot.png)
+#####STEP 1: SPLIT INTO TWO STACKS
 
-Thus, the algorithm works best with five batches for sorting lists with up to 100 values. From then on, the optimal number of batches increases roughly linearly between 100 and 500 values and can probably be extraplated in this way to higher values.
+At each iteration, calculate the number of conflicts for each number left in stack a. A conflict is defined as a pair of number in the stack that are in the wrong order (i.e. the smaller number comes last). Mark the number with the most conflicts to be pushed to stack b later on and ignore it during future iterations. 
 
-# Further directions
+For example, in the stack
 
-1. Implement A* algorithm, using Batched Insertion Sort as the heuristic.
-2. Implement a variation of A* algorithm by expanding each node up to N operations ahead, then pruning the fringe (possibly by removing all by the single best node), and repeating. This doesn't guarantee optimality.
-3. Implement [Iterative deepening A*](https://en.wikipedia.org/wiki/Iterative_deepening_A*)
+```
+STACK A: 4->5->3->1->2->6
+```
+the number of conflicts is as follows:
+
+```
+4: 2 conflict (with 3 and 6)
+5: 2 conflict (with 3 and 6)
+3: 3 conflicts (with 4, 5 and 6)
+1: 0 conflicts
+2: 0 conflicts
+6: 3 conflicts (with 3, 4 and 5)
+```
+Hence, we mark 3 to be pushed. Next,
+
+```
+STACK A: 4->5->3(ignored)->1->2->6
+```
+where
+
+```
+4: 1 conflict (with 6)
+5: 1 conflict (with 6)
+3: ignored
+1: 0 conflicts
+2: 0 conflicts
+6: 2 conflicts (with 4 and 5)
+```
+Hence, we mark 6 to be pushed.
+
+Once there are no conflicts left in stack a, push all the numbers destined to be pushed to stack b (so far we haven't pushed them, just kept in memory). After we're done, stack a should already be "circularly" sorted, albeit missing some numbers which are not in stack b. Moreover, we have reached this step by pushing the *fewest* numbers to stack b.
+
+#####STEP 2: MERGE STACKS
+
+At each iteration, calculate the number of operations necessary to push a number from stack b to stack a, such that it ends up in the right place on stack a (without introducing any conflicts). Take into account that `ra` and `rb` can be accomplished simultaneously with `rr` etc. Do this for all numbers in stack b, select the one with the least number of operations and push back to stack a.
+
+Carrying on with the example above, we have
+
+```
+STACK A: 4->5->1->2
+STACK B: 6->3
+```
+and
+
+```
+6: 2 rotations (2 x ra) and 1 push (1 x pa)
+3: 1 rotation (1 x rb) and 1 push (1 x pa)
+```
+
+Hence, we start by pushing 3. Then
+
+```
+STACK A: 3->4->5->1->2
+STACK B: 6
+```
+we only have 6 left in stack b, so we push it with `2 x rra` and `1 x pa`.
+
+
+#####STEP 3: ROTATE STACK A
+
+At this point, stack b is empty and stack a is "circulary" sorted (i.e. it has no conflicts but the smallest number may not be on top).
+
+For example, our stack a after steam 2 is
+
+```
+6->1->2->3->4->5
+```
+It would take `1 x ra` and `5 x rra` to get 1 to the top. Therefore, we choose perform `1 x ra` and we're done.
 
 ## Acknowledgements
 
-My sincere thanks go to [Jamie Robert Dawson](https://medium.com/@jamierobertdawson) for writing up his algorithm. I am also grateful to the entire team behind School 42 and its [Moscow branch](https://21-school.ru
-), as well as to my fellow students for supports and discussions.
+My thanks go to `@jmalik` at the [Moscow branch](https://21-school.ru
+) of School 42, discussions with whom have greatly improved my understanding of the problem and contributed to [STEP 2](#####-step-3:-rotate-stack-a) of my algorithm. I am also grateful to the entire team behind School 42, as well as to my other fellow students for help and support.
 
 ---
 If you have any questions, please contact me on Github.
