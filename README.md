@@ -45,13 +45,13 @@ The project yields three programs:
 	* Gets as an argument the stack a formatted as a list of integers (the first argument should be at the top of the stack)
 	* The program must display the smallest list of instructions possible to sort the stack a, the smallest number being at the top.
 	* In case of error, you must display `Error` followed by a `\n` on the standard error. Errors include for example: some arguments aren’t integers, some arguments are bigger than an integer, and/or there are duplicates.
-3. `random_generator`
+3. `random-list-generator`
 	* A simple Python script that outputs a random permutation of a given number of positive integer values
 
 The project is then checked as follows
 
 ```sh
-> ARG=$(./random_generator <number of values>); ./push_swap $ARG | ./checker $ARG
+> ARG=$(./random-list-generator <number of values>); ./push_swap $ARG | ./checker $ARG
 OK
 ```
 
