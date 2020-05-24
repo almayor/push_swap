@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 07:14:22 by unite             #+#    #+#             */
-/*   Updated: 2020/05/24 07:24:55 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/24 07:33:45 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,4 @@ void	ps_print_stacks(t_stack *st_a, t_stack *st_b)
 		li_a = li_a ? li_a->next : NULL;
 		li_b = li_b ? li_b->next : NULL;
 	}
-}	
+}
