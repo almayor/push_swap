@@ -147,7 +147,7 @@ make test TEST-UNIT=0
 Finally, if you wish `checker` to print stacks after each operation (e.g. for debugging purposes), you can do with 
 
 ```sh
-checker -v <numbers>
+./checker -v <numbers>
 ```
 
 # Acknowledgements
