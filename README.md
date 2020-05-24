@@ -109,6 +109,8 @@ Hence, we mark 6 to be pushed.
 
 Once there are no conflicts left in stack a, push all the numbers destined to be pushed to stack b (so far we haven't pushed them, just kept in memory). After we're done, stack a should already be "circularly" sorted, albeit missing some numbers which are not in stack b. Moreover, we have reached this step by pushing the *fewest* numbers to stack b.
 
+However, this step only helps if the size of stack a is relatively small. Therefore, if it is greater than 350, we simply push all numbers from stack a to stack b.
+
 ### STEP 2: MERGE STACKS
 
 At each iteration, calculate the number of operations necessary to push a number from stack b to stack a, such that it ends up in the right place on stack a (without introducing any conflicts). Take into account that `ra` and `rb` can be accomplished simultaneously with `rr` etc. Do this for all numbers in stack b, select the one with the least number of operations and push back to stack a.
@@ -133,7 +135,6 @@ STACK A: 3->4->5->1->2
 STACK B: 6
 ```
 we only have 6 left in stack b, so we push it with `2 x rra` and `1 x pa`.
-
 
 ### STEP 3: ROTATE STACK A
 
