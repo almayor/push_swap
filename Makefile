@@ -6,7 +6,7 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/05/24 02:50:01 by unite            ###   ########.fr        #
+#    Updated: 2020/05/24 05:18:55 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,6 @@ operations/perform_operation.c \
 sorts/advanced_sort/advanced_merge_stacks.c \
 sorts/advanced_sort/advanced_push.c \
 sorts/advanced_sort/advanced_sort.c \
-sorts/advanced_sort/advanced_split_stacks.c \
 sorts/simple_sort/simple_sort.c \
 stack/append_stack.c \
 stack/avg_stack.c \
