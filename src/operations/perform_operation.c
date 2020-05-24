@@ -6,13 +6,14 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 02:25:40 by unite             #+#    #+#             */
-/*   Updated: 2020/05/17 05:00:14 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/24 07:26:40 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 static int			g_verbose;
+static int			g_debug;
 
 static t_operation	g_dispatch_table[] = {
 	(t_operation){ .name = "sa", .fun = perform_sa },
@@ -33,6 +34,11 @@ void				set_verbose(int code)
 	g_verbose = code;
 }
 
+void				set_debug(int code)
+{
+	g_debug = code;
+}
+
 void				perform_operation(t_stack *st_a, t_stack *st_b,
 									char *oper)
 {
@@ -46,6 +52,11 @@ void				perform_operation(t_stack *st_a, t_stack *st_b,
 			if (g_verbose)
 				ft_putendl(oper);
 			g_dispatch_table[i].fun(st_a, st_b);
+			if (g_debug)
+			{
+				ft_printf("> %s\n", oper);
+				ps_print_stacks(st_a, st_b);
+			}
 			return ;
 		}
 		i++;

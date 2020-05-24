@@ -6,7 +6,7 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/05/24 05:18:55 by unite            ###   ########.fr        #
+#    Updated: 2020/05/24 07:21:29 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ utils/ps_exit.c \
 utils/ps_index_stack.c \
 utils/ps_isnumeric_str.c \
 utils/ps_tab2stack.c \
+utils/ps_print_stacks.c \
 
 TEST_UNIT_NAME = unit-tests
 

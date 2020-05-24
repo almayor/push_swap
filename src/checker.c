@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 22:48:04 by unite             #+#    #+#             */
-/*   Updated: 2020/05/23 22:26:56 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/24 07:25:56 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,12 @@ int			main(int argc, char **argv)
 		return (0);
 	new_stack(&st_a);
 	new_stack(&st_b);
-	if (ps_tab2stack(++argv, &st_a) ||
+	if (ft_strequ(*(++argv), "-v"))
+	{
+		++argv;
+		set_debug(1);
+	}
+	if (ps_tab2stack(argv, &st_a) ||
 		process_operations(&st_a, &st_b))
 	{
 		free_stack(&st_a);
@@ -43,9 +48,9 @@ int			main(int argc, char **argv)
 		ps_exit(errno);
 	}
 	if (issorted_stack(&st_a) && st_b.size == 0)
-		ft_putendl("OK");
+		ft_putendl_fd("OK", 1);
 	else
-		ft_putendl("KO");
+		ft_putendl_fd("KO", 1);
 	free_stack(&st_a);
 	free_stack(&st_b);
 }

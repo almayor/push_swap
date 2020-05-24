@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/15 16:04:01 by unite             #+#    #+#             */
-/*   Updated: 2020/05/22 18:42:44 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/24 07:21:14 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,11 @@ void			ps_exit(int code);
 int				ps_index_stack(t_stack *stack);
 int				ps_isnumeric_str(const char *str);
 int				ps_tab2stack(char **tab, t_stack *stack);
+void			ps_print_stacks(t_stack *st_a, t_stack *st_b);
 
 void			set_verbose(int code);
+void			set_debug(int code);
+
 void			perform_operation(t_stack *st_a, t_stack *st_b, char *oper);
 void			perform_pa(t_stack *st_a, t_stack *st_b);
 void			perform_pb(t_stack *st_a, t_stack *st_b);
