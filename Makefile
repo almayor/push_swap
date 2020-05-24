@@ -6,7 +6,7 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/05/23 18:41:26 by unite            ###   ########.fr        #
+#    Updated: 2020/05/24 02:50:01 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,14 +56,16 @@ utils/ps_index_stack.c \
 utils/ps_isnumeric_str.c \
 utils/ps_tab2stack.c \
 
-TEST_NAME = unit-tests
+TEST_UNIT_NAME = unit-tests
 
-TEST_SRC_NAME = \
+TEST_SRC_UNIT_NAME = \
 main.c \
 stack_suite.c \
 operations_suite.c \
 utils_suite.c \
 sorts_suite.c
+
+TEST_FUNC_NAME = functional-tests.py
 
 ################################################################################
 
@@ -72,10 +74,12 @@ PATHO = obj
 PATHL = libftprintfgnl
 PATHI = include $(PATHL)
 
-TEST_PATH = test/unit
-TEST_PATHS = $(TEST_PATH)/src
-TEST_PATHO = $(TEST_PATH)/obj
-TEST_PATHI = $(TEST_PATH)/include
+TEST_UNIT_PATH = test/unit
+TEST_UNIT_PATHS = $(TEST_UNIT_PATH)/src
+TEST_UNIT_PATHO = $(TEST_UNIT_PATH)/obj
+TEST_UNIT_PATHI = $(TEST_UNIT_PATH)/include
+
+TEST_FUNC_PATH = test/functional
 
 ################################################################################
 
@@ -91,7 +95,7 @@ LINK = $(CC)
 CFLAGS += -Wall -Wextra -Werror
 CFLAGS += -O3 -std=gnu11 -ffast-math -march=native
 CFLAGS += -MMD
-CFLAGS += $(foreach path, $(PATHI) $(TEST_PATHI), -I$(path))
+CFLAGS += $(foreach path, $(PATHI) $(TEST_UNIT_PATHI), -I$(path))
 
 LIBS = -lftprintfgnl -L $(PATHL)
 
@@ -112,12 +116,14 @@ OBJ_CK = $(patsubst %.c, $(PATHO)/%.o, $(SRC_CK_NAME))
 SRC_PS = $(patsubst %.c, $(PATHS)/%.c, $(SRC_PS_NAME))
 OBJ_PS = $(patsubst %.c, $(PATHO)/%.o, $(SRC_PS_NAME))
 
-TEST_SRC = $(patsubst %.c, $(TEST_PATHS)/%.c, $(TEST_SRC_NAME))
-TEST_OBJ = $(patsubst %.c, $(TEST_PATHO)/%.o, $(TEST_SRC_NAME))
+TEST_UNIT_SRC = $(patsubst %.c, $(TEST_UNIT_PATHS)/%.c, $(TEST_SRC_UNIT_NAME))
+TEST_UNIT_OBJ = $(patsubst %.c, $(TEST_UNIT_PATHO)/%.o, $(TEST_SRC_UNIT_NAME))
 
 BIN_CK = $(NAME_CK)
 BIN_PS = $(NAME_PS)
-TEST_BIN = $(TEST_PATH)/$(TEST_NAME)
+TEST_UNIT_BIN = $(TEST_UNIT_PATH)/$(TEST_UNIT_NAME)
+
+TEST_FUNC_EXE = $(TEST_FUNC_PATH)/$(TEST_FUNC_NAME)
 
 ################################################################################
 
@@ -127,7 +133,7 @@ $(BIN_CK) : $(OBJ_CK) $(OBJ)
 $(BIN_PS) : $(OBJ_PS) $(OBJ)
 	$(LINK) $^ -o $@ $(LIBS)
 
-$(TEST_BIN) : $(TEST_OBJ) $(OBJ)
+$(TEST_UNIT_BIN) : $(TEST_UNIT_OBJ) $(OBJ)
 	$(LINK) $^ -o $@ $(LIBS)
 
 ################################################################################
@@ -136,7 +142,7 @@ $(PATHO)/%.o : $(PATHS)/%.c
 	$(MKDIR) -p $(@D)
 	$(COMPILE) $(CFLAGS) $< -o $@
 
-$(TEST_PATHO)/%.o : $(TEST_PATHS)/%.c
+$(TEST_UNIT_PATHO)/%.o : $(TEST_UNIT_PATHS)/%.c
 	$(MKDIR) -p $(@D)
 	$(COMPILE) $(CFLAGS) $< -o $@
 
@@ -167,8 +173,15 @@ clean :
 
 re : fclean all
 
-test : all $(TEST_BIN)
-	./$(TEST_BIN)
+test-unit: all $(TEST_UNIT_BIN)
+	@echo '########### UNIT TESTS ###########'
+	./$(TEST_UNIT_BIN)
+
+test :
+ifneq ($(TEST-UNIT), 0)
+	make test-unit
+endif
+	./$(TEST_FUNC_EXE)
 
 $(PATHL)/libftprintfgnl.a :
 	$(MAKE) -C $(PATHL)

@@ -146,6 +146,39 @@ STACK A: 6->1->2->3->4->5
 ```
 It would take `1 x ra` and `5 x rra` to get 1 to the top. Therefore, we choose perform `1 x ra` and we're done.
 
+# Results
+
+Here is a graph describing the performance of this algorithm in the range between 1 and 500 values. Each data point consists of 100 measurements.
+
+![](docs/100val-1to500.png)
+
+And here's another one, for the range between 1 and 100 values. Each data point consists of 500 measurements.
+
+![](docs/500val-1to100.png)
+
+# Build and test
+
+To build executables, run
+
+```sh
+git clone git@github.com:almayor/push_swap.git
+cd push_swap
+git submodule update --init --recursive
+make
+```
+
+To run tests (unit and functional), run
+
+```sh
+make test
+```
+
+or, if you wish to skip unit tests,
+
+```sh
+make test TEST-UNIT=0
+```
+
 # Acknowledgements
 
 My thanks go to `@jmalik` at the [Moscow branch](https://21-school.ru
