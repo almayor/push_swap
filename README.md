@@ -73,49 +73,13 @@ For efficiency, two different algorithms are utilized
 
 ### STEP 1: SPLIT INTO TWO STACKS
 
-At each iteration, calculate the number of conflicts for each number left in stack a. A conflict is defined as a pair of number in the stack that are in the wrong order (i.e. the smaller number comes last). Mark the number with the most conflicts to be pushed to stack b later on and ignore it during future iterations. 
-
-For example, in the stack
-
-```
-STACK A: 4->5->3->1->2->6
-```
-the number of conflicts is as follows:
-
-```
-4: 2 conflict (with 3 and 6)
-5: 2 conflict (with 3 and 6)
-3: 3 conflicts (with 4, 5 and 6)
-1: 0 conflicts
-2: 0 conflicts
-6: 3 conflicts (with 3, 4 and 5)
-```
-Hence, we mark 3 to be pushed. Next,
-
-```
-STACK A: 4->5->3(ignored)->1->2->6
-```
-where
-
-```
-4: 1 conflict (with 6)
-5: 1 conflict (with 6)
-3: ignored
-1: 0 conflicts
-2: 0 conflicts
-6: 2 conflicts (with 4 and 5)
-```
-Hence, we mark 6 to be pushed.
-
-Once there are no conflicts left in stack a, push all the numbers destined to be pushed to stack b (so far we haven't pushed them, just kept in memory). After we're done, stack a should already be "circularly" sorted, albeit missing some numbers which are not in stack b. Moreover, we have reached this step by pushing the *fewest* numbers to stack b.
-
-However, this step only helps if the size of stack a is relatively small. Therefore, if it is greater than 350, we simply push all numbers from stack a to stack b.
+Push all numbers, except for 2, from stack a to stack b.
 
 ### STEP 2: MERGE STACKS
 
 At each iteration, calculate the number of operations necessary to push a number from stack b to stack a, such that it ends up in the right place on stack a (without introducing any conflicts). Take into account that `ra` and `rb` can be accomplished simultaneously with `rr` etc. Do this for all numbers in stack b, select the one with the least number of operations and push back to stack a.
 
-Carrying on with the example above, we have
+For example, say we have
 
 ```
 STACK A: 4->5->1->2
