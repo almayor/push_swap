@@ -182,7 +182,7 @@ make test TEST-UNIT=0
 # Acknowledgements
 
 My thanks go to `@jmalik` at the [Moscow branch](https://21-school.ru
-) of School 42, discussions with whom have greatly improved my understanding of the problem and contributed to [STEP 2](###-step-2:-merge-stacks) of my algorithm. I am also grateful to the entire team behind School 42, as well as to my other fellow students for help and support.
+) of School 42, discussions with whom have greatly improved my understanding of the problem and contributed to [STEP 2](###-step-2:-merge-stacks) of my algorithm. I am also grateful to the entire team behind School 42, as well as to my other fellow students for help and support. Finally, the push swap visualizer [project](https://github.com/o-reo/push_swap_visualizer) by [o-reo](https://github.com/o-reo) has been a veritable treasure.
 
 ---
 If you have any questions, please contact me on Github.
