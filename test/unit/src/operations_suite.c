@@ -83,6 +83,17 @@ MU_TEST(test_perform_pa) {
 	mu_check(pull_stack(&sa) == -1);
 	free_stack(&sa);
 	free_stack(&sb);
+
+	new_stack(&sa);
+	new_stack(&sb);
+	append_stack(&sa, 1);
+	append_stack(&sa, 2);
+	append_stack(&sa, 3);
+	perform_operation(&sa, &sb, "pa");
+	mu_check(sa.size == 3);
+	mu_check(pull_stack(&sa) == 1);
+	free_stack(&sa);
+	free_stack(&sb);
 }
 
 MU_TEST(test_perform_pb) {
@@ -108,6 +119,17 @@ MU_TEST(test_perform_pb) {
 	append_stack(&sa, 2);
 	append_stack(&sa, 3);
 	perform_operation(&sa, &sb, "pb");
+	mu_check(pull_stack(&sb) == 1);
+	free_stack(&sa);
+	free_stack(&sb);
+
+	new_stack(&sa);
+	new_stack(&sb);
+	append_stack(&sb, 1);
+	append_stack(&sb, 2);
+	append_stack(&sb, 3);
+	perform_operation(&sa, &sb, "pb");
+	mu_check(sb.size == 3);
 	mu_check(pull_stack(&sb) == 1);
 	free_stack(&sa);
 	free_stack(&sb);

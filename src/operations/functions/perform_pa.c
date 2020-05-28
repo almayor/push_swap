@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 23:15:52 by unite             #+#    #+#             */
-/*   Updated: 2020/05/17 01:44:51 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/28 17:24:16 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,9 @@
 
 void	perform_pa(t_stack *st_a, t_stack *st_b)
 {
-	push_stack(st_a, pull_stack(st_b));
+	int	num;
+
+	if (!(num = pull_stack(st_b)))
+		return ;
+	push_stack(st_a, num);
 }
