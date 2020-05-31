@@ -15,17 +15,13 @@ class Test:
         self.opers = opers if opers else list()
         
         if res.capitalize() == "Error":
-            self.out = ""
-            self.err = "Error\n"
+            self.out, self.err = "", "Error\n"
         elif res.upper() == "OK":
-            self.out = "OK\n"
-            self.err = ""
+            self.out, self.err = "OK\n", ""
         elif res.upper() == "KO":
-            self.out = "KO\n"
-            self.err = ""
+            self.out, self.err = "KO\n", ""
         elif res == "":
-            self.out = ""
-            self.err = ""
+            self.out, self.err = "", ""
         else:
             raise ValueError
         
@@ -95,8 +91,7 @@ class PipeTest:
         return (
             self.actual_err == "" and
             self.actual_out == "OK\n" and
-            self.actual_noper <= self.max_noper and
-            self.actual_noper >= self.min_noper
+            self.min_noper <= self.actual_noper <= self.max_noper
         )
 
 class Suite:
@@ -121,11 +116,12 @@ class Suite:
                 for _ in range(len(self.tests) - 1 - self.nsuccess):
                     print('⚬', end="")
             
-                print("\n\nTrace:")
-                print(f"    {test.program} {' '.join(test.args)}")
-                print(f"    stdout: {repr(test.actual_out):9s} (expected {repr(test.out)})")
-                print(f"    stderr: {repr(test.actual_err):9s} (expected {repr(test.err)})")
-                print()
+                print(
+                    "\n\nTrace:"
+                    f"    {test.program} {' '.join(test.args)}\n"
+                    f"    stdout: {repr(test.actual_out):9s} (expected {repr(test.out)})\n"
+                    f"    stderr: {repr(test.actual_err):9s} (expected {repr(test.err)})\n\n"
+                )
                 return False
             
             print(u'✓', end='')
