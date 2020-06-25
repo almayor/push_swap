@@ -14,9 +14,6 @@
 
 void	perform_pa(t_stack *st_a, t_stack *st_b)
 {
-	int	num;
-
-	if (!(num = pull_stack(st_b)))
-		return ;
-	push_stack(st_a, num);
+	if (st_b->size > 0)
+		push_stack(st_a, pull_stack(st_b));
 }

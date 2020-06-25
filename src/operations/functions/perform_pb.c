@@ -14,9 +14,6 @@
 
 void	perform_pb(t_stack *st_a, t_stack *st_b)
 {
-	int	num;
-
-	if (!(num = pull_stack(st_a)))
-		return ;
-	push_stack(st_b, num);
+	if (st_a->size > 0)
+		push_stack(st_b, pull_stack(st_a));
 }
