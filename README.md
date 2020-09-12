@@ -2,16 +2,16 @@
 
 *This project is part of the official curriculum at [School 42](https://en.wikipedia.org/wiki/42_(school)).*
 
+## Disclaimer
+> In [School 42](https://en.wikipedia.org/wiki/42_(school)), almost every project must be written to comply with. coding standard (also known as the "[Norm](./docs/subjects/norme.en.pdf)"). As a result, the implementation of certain parts may appear strange.
+
+
 # Overview
 
 
 * [Official instructions](docs/push_swap.en.pdf)
 * The goal of this project is to practice sorting algorithms and design a new one, optimized for a given data structure.
 * As per instructions, the project is realised using a C library compiled during [previous projects](http://github.com/almayor/libftprintfgnl).
-* The project (with the exception of tests) is consistent with the [Norme](docs/norme.en.pdf), the code standard accepted at *School 42*. In particular, this means that
-	* no comments inline or inside functions
-	* `for` loops and `switch` statements are forbidden
-	* each function must be maximum 25 lines
 
 # Problem
 
@@ -153,7 +153,7 @@ Finally, if you wish `checker` to print stacks after each operation (e.g. for de
 # Acknowledgements
 
 My thanks go to `@jmalik` at the [Moscow branch](https://21-school.ru
-) of School 42, discussions with whom have greatly improved my understanding of the problem and contributed to [STEP 2](###-step-2:-merge-stacks) of my algorithm. I am also grateful to the entire team behind School 42, as well as to my other fellow students for help and support. Finally, the push swap visualizer [project](https://github.com/o-reo/push_swap_visualizer) by [o-reo](https://github.com/o-reo) has been a veritable treasure.
+) of School 42, discussions with whom have greatly improved my understanding of the problem and contributed to [STEP 2](###-step-2:-merge-stacks) of my algorithm. I am also grateful to the entire team behind School 42, as well as to my other fellow students for help and support. Finally, the push swap visualizer [project](https://github.com/o-reo/push_swap_visualizer) by [o-reo](https://github.com/o-reo) has been a veritable treasure
 
 ---
 If you have any questions, please contact me on Github.
